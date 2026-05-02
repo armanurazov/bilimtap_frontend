@@ -603,13 +603,13 @@
 
   <!-- TRUST BAR -->
   <div class="trust-bar">
-    <div class="trust-stat"><strong>1 200+</strong> Студентов</div>
+    <div class="trust-stat"><strong>1 500+</strong> Студентов</div>
     <div class="trust-div" aria-hidden="true"></div>
-    <div class="trust-stat"><strong>18</strong> Видеокурсов</div>
+    <div class="trust-stat"><strong>21</strong> Видеокурс</div>
     <div class="trust-div" aria-hidden="true"></div>
     <div class="trust-stat"><strong>4.8 ★</strong> Средний рейтинг</div>
     <div class="trust-div" aria-hidden="true"></div>
-    <div class="trust-stat"><strong>200+</strong> Часов видео</div>
+    <div class="trust-stat"><strong>220+</strong> Часов видео</div>
   </div>
 
   <!-- VALUE BAR -->
@@ -647,6 +647,7 @@
       <button class="cat-pill" data-cat="Бизнес" role="tab" aria-selected="false">Бизнес</button>
       <button class="cat-pill" data-cat="Дизайн" role="tab" aria-selected="false">Дизайн</button>
       <button class="cat-pill" data-cat="Финансы и право" role="tab" aria-selected="false">Финансы и право</button>
+      <button class="cat-pill" data-cat="Языки" role="tab" aria-selected="false">Языки</button>
       <button class="cat-pill" data-cat="Soft skills" role="tab" aria-selected="false">Soft skills</button>
       <button class="cat-pill" data-cat="Экзамены" role="tab" aria-selected="false">Экзамены</button>
     </div>
@@ -734,7 +735,7 @@
           <a class="footer-link" href="#courses">Frontend разработка</a>
           <a class="footer-link" href="#courses">SMM и таргетинг</a>
           <a class="footer-link" href="#courses">AI и ChatGPT</a>
-          <a class="footer-link" href="#courses">Kaspi и маркетплейсы</a>
+          <a class="footer-link" href="#courses">Казахский язык</a>
           <a class="footer-link" href="#courses">IELTS</a>
         </div>
         <div>
@@ -848,29 +849,14 @@
     const BACKEND = 'https://bilimtapbackend-production.up.railway.app';
 
     // ─────────────────────────────────────────────────────
-    // COURSES — 18 курсов
-    // Цены: оригинал ~15 000 ₸, скидка 50% → ~7 500 ₸
-    // Некоторые дороже/дешевле как указано
+    // COURSES — 21 курс
     //
-    // Файлы изображений (положить рядом с index.html):
-    //   course-python.webp        → Python с нуля
-    //   course-smm.webp           → SMM и таргетинг
-    //   course-taxes.webp         → Налоговый кодекс ИП
-    //   course-ai.webp            → Заработок на AI
-    //   course-kaspi.webp         → Kaspi и маркетплейсы
-    //   course-uxui.webp          → UX/UI дизайн
-    //   course-reels.webp         → Мобилография и Reels
-    //   course-freelance.webp     → Фриланс с нуля
-    //   course-excel.webp         → Excel и аналитика
-    //   course-ip.webp            → Открытие ИП
-    //   course-frontend.webp      → Frontend разработка
-    //   course-backend.webp       → Backend разработка
-    //   course-qa.webp            → QA тестирование
-    //   course-1c.webp            → 1С программирование
-    //   course-sql.webp           → SQL и базы данных
-    //   course-speaking.webp      → Ораторское мастерство
-    //   course-sat.webp           → SAT подготовка
-    //   course-ielts.jpg         → IELTS полный курс
+    // Новые файлы изображений (добавить в папку с index.html):
+    //   course-kazakh.webp    → Казахский язык
+    //   course-english.webp   → Английский для делового общения
+    //   course-tajwid.png    → Таджвид
+    //
+    // Все остальные файлы — без изменений (см. предыдущую версию)
     // ─────────────────────────────────────────────────────
     const COURSES = [
 
@@ -1178,7 +1164,69 @@
         ],
       },
 
-      // ── БЛОК 3: SOFT SKILLS И ЭКЗАМЕНЫ ──────────────────
+      // ── БЛОК 3: ЯЗЫКИ ────────────────────────────────────
+      {
+        id: 'kazakh-language',
+        category: 'Языки',
+        image: 'course-kazakh.webp',
+        emoji: '🇰🇿',
+        fallbackBg: 'linear-gradient(135deg,#16a34a,#15803d)',
+        tag: 'ht', tagLabel: 'Актуально',
+        title: 'Казахский язык с нуля — пиши, говори и понимай свободно',
+        instructor: 'Гүлнәр Сейітова',
+        rating: '4.9', reviews: '(143 отзыва)', students: '· 340 студентов',
+        pnow: '5 500 ₸', pwas: '11 000 ₸',
+        hours: '12', lectures: '54', level: 'С нуля',
+        desc: 'Казахский язык открывает двери: карьера в госструктурах, бизнесе и общение с 70% населения страны. Курс построен на разговорной практике и письме — вы быстро выйдете на уровень уверенного общения в реальных ситуациях.',
+        outcomes: [
+          'Читаете и пишете на казахском без ошибок',
+          'Ведёте деловую переписку и разговоры',
+          'Понимаете казахскую речь на слух',
+          'Уверенно общаетесь в госорганах и на работе',
+        ],
+      },
+      {
+        id: 'english-business',
+        category: 'Языки',
+        image: 'course-english.png',
+        emoji: '🇬🇧',
+        fallbackBg: 'linear-gradient(135deg,#2563eb,#1d4ed8)',
+        tag: 'bs', tagLabel: 'Бестселлер',
+        title: 'Английский для делового общения — говори с иностранными коллегами уверенно',
+        instructor: 'Айнур Сейтова',
+        rating: '4.8', reviews: '(118 отзывов)', students: '· 275 студентов',
+        pnow: '6 500 ₸', pwas: '13 000 ₸',
+        hours: '14', lectures: '60', level: 'A2–B2',
+        desc: 'Практический курс делового английского для тех, кто уже знает базу но теряется на встречах, в переписке и на переговорах с иностранными партнёрами. Никакой грамматики ради грамматики — только реальные ситуации бизнеса.',
+        outcomes: [
+          'Уверенно ведёте переговоры и встречи на английском',
+          'Пишете деловые письма, отчёты и презентации',
+          'Понимаете иностранных коллег с первой фразы',
+          'Проходите интервью на английском без страха',
+        ],
+      },
+      {
+        id: 'tajwid',
+        category: 'Языки',
+        image: 'course-tajwid.png',
+        emoji: '📖',
+        fallbackBg: 'linear-gradient(135deg,#065f46,#047857)',
+        tag: 'nw', tagLabel: 'Новый',
+        title: 'Таджвид с нуля — читай Коран правильно и красиво',
+        instructor: 'Ерлан Қасымов',
+        rating: '4.9', reviews: '(92 отзыва)', students: '· 220 студентов',
+        pnow: '5 000 ₸', pwas: '10 000 ₸',
+        hours: '10', lectures: '45', level: 'С нуля',
+        desc: 'Курс по правилам таджвида для начинающих и тех, кто хочет исправить ошибки в чтении. Вы освоите правила произношения арабских букв, правила слияния и остановок, и научитесь читать аяты так, как это предписано традицией.',
+        outcomes: [
+          'Правильно произносите все арабские буквы и звуки',
+          'Знаете основные правила таджвида и применяете их',
+          'Читаете Коран без ошибок в произношении',
+          'Можете самостоятельно исправлять ошибки в чтении',
+        ],
+      },
+
+      // ── БЛОК 4: SOFT SKILLS И ЭКЗАМЕНЫ ──────────────────
       {
         id: 'public-speaking',
         category: 'Soft skills',
