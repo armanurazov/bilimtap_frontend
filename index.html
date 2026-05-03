@@ -841,7 +841,7 @@
       },
       {
         id: 'taxes-ip', category: 'Финансы и право',
-        image: 'course-taxes.webp', emoji: '🧾', fallbackBg: 'linear-gradient(135deg,#64748b,#475569)',
+        image: 'course-tax.jpg', emoji: '🧾', fallbackBg: 'linear-gradient(135deg,#64748b,#475569)',
         tag: 'nw', tagLabel: 'Новый 2026',
         title: 'Новый налоговый кодекс РК для ИП 2026 — без штрафов и переплат',
         instructor: 'Асель Джаксыбекова', rating: '4.9', reviews: '(97 отзывов)', students: '· 280 студентов',
@@ -851,7 +851,7 @@
       },
       {
         id: 'ai-money', category: 'IT и разработка',
-        image: 'course-ai.webp', emoji: '🤖', fallbackBg: 'linear-gradient(135deg,#7c3aed,#5b21b6)',
+        image: 'course-ai.jpg', emoji: '🤖', fallbackBg: 'linear-gradient(135deg,#7c3aed,#5b21b6)',
         tag: 'ht', tagLabel: 'Тренд',
         title: 'Зарабатывай на AI: ChatGPT и Midjourney — от 0 до первых клиентов',
         instructor: 'Нурлан Ахметов', rating: '4.8', reviews: '(156 отзывов)', students: '· 380 студентов',
@@ -861,7 +861,7 @@
       },
       {
         id: 'ux-ui-design', category: 'Дизайн',
-        image: 'course-uxui.webp', emoji: '🎨', fallbackBg: 'linear-gradient(135deg,#ec4899,#be185d)',
+        image: 'course-designer.jpg', emoji: '🎨', fallbackBg: 'linear-gradient(135deg,#ec4899,#be185d)',
         tag: 'nw', tagLabel: 'Новый',
         title: 'UX/UI дизайн с нуля — портфолио и первые клиенты за 10 недель',
         instructor: 'Мадина Касымова', rating: '4.8', reviews: '(88 отзывов)', students: '· 210 студентов',
@@ -881,7 +881,7 @@
       },
       {
         id: 'sql-databases', category: 'IT и разработка',
-        image: 'course-sql.webp', emoji: '🗄️', fallbackBg: 'linear-gradient(135deg,#0ea5e9,#0369a1)',
+        image: 'course-database.webp', emoji: '🗄️', fallbackBg: 'linear-gradient(135deg,#0ea5e9,#0369a1)',
         tag: 'nw', tagLabel: 'Новый',
         title: 'SQL и базы данных с нуля — работай с данными и зарабатывай больше',
         instructor: 'Нурлан Ахметов', rating: '4.8', reviews: '(73 отзыва)', students: '· 170 студентов',
@@ -1232,9 +1232,22 @@
       document.getElementById('tutor-success').classList.add('show');
     }
 
-    // ── INIT ──────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────
     renderCards('all');
     initSession();
+
+    // ── DEEP LINK via ?modal= param ───────────────────────
+    (function () {
+      const target = new URLSearchParams(window.location.search).get('modal');
+      if (!target) return;
+      if (target === 'tutor') {
+        // Small delay so page renders first
+        setTimeout(openTutorModal, 400);
+        return;
+      }
+      const course = COURSES.find(c => c.id === target);
+      if (course) setTimeout(() => openCourseModal(course), 400);
+    })();
 
   }());
   </script>
