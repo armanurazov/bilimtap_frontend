@@ -65,21 +65,15 @@
       justify-content: center;
     }
     .topbar-bg {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image: url('image.webp');
-      background-size: cover;
-      background-position: center;
+      background-size: cover; background-position: center;
       opacity: 0.18;
     }
     .topbar-text {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 20px;
+      flex-wrap: wrap; justify-content: center;
     }
     .topbar strong { color: #fcd34d; }
     .topbar-sep { opacity: 0.4; }
@@ -90,11 +84,11 @@
       background: var(--white);
       border-bottom: 1px solid var(--gray-200);
       padding: 0 40px; height: 64px;
-      display: flex; align-items: center; gap: 24px;
+      display: flex; align-items: center; gap: 20px;
     }
     .nav-logo { font-size: 1.35rem; font-weight: 800; color: var(--gray-900); letter-spacing: -0.02em; flex-shrink: 0; }
     .nav-logo span { color: var(--blue); }
-    .nav-search { flex: 1; max-width: 480px; position: relative; }
+    .nav-search { flex: 1; max-width: 420px; position: relative; }
     .nav-search input {
       width: 100%; padding: 10px 16px 10px 42px;
       border: 1.5px solid var(--gray-200); border-radius: 24px;
@@ -109,13 +103,19 @@
     .btn-ghost {
       padding: 8px 16px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
       font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--gray-700);
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2s, color 0.2s; white-space: nowrap;
     }
     .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+    .btn-tutor {
+      padding: 8px 16px; border: 1.5px solid var(--blue); border-radius: var(--radius-sm);
+      font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--blue);
+      transition: background 0.2s, color 0.2s; white-space: nowrap; background: transparent;
+    }
+    .btn-tutor:hover { background: var(--blue); color: var(--white); }
     .btn-blue {
       padding: 8px 20px; background: var(--blue); color: var(--white);
       border-radius: var(--radius-sm); font-family: var(--font); font-size: 13px; font-weight: 600;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2s, transform 0.15s; white-space: nowrap;
     }
     .btn-blue:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
@@ -180,18 +180,9 @@
 
     /* HERO VISUAL */
     .hero-visual { position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.7s var(--ease) 0.35s forwards; }
-    .hero-card {
-      background: var(--white); border-radius: var(--radius); overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-    .hero-card-img {
-      width: 100%; height: 160px; object-fit: cover; display: block;
-    }
-    .hero-card-img-fallback {
-      width: 100%; height: 160px;
-      background: linear-gradient(135deg, var(--blue) 0%, #1a6fef 100%);
-      display: flex; align-items: center; justify-content: center; font-size: 48px;
-    }
+    .hero-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .hero-card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .hero-card-img-fallback { width: 100%; height: 160px; background: linear-gradient(135deg, var(--blue) 0%, #1a6fef 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; }
     .hero-card-body { padding: 16px 18px 18px; }
     .hero-card-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
     .hero-card-title { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; line-height: 1.4; }
@@ -205,37 +196,20 @@
     .price-now { font-size: 17px; font-weight: 800; color: var(--gray-900); }
     .price-was { font-size: 12px; color: var(--gray-400); text-decoration: line-through; }
     .price-badge { background: var(--yellow-light); color: #92400e; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-    .ftag {
-      position: absolute; background: var(--white); border-radius: var(--radius-sm);
-      padding: 9px 13px; box-shadow: var(--shadow-md);
-      display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--gray-700);
-    }
+    .ftag { position: absolute; background: var(--white); border-radius: var(--radius-sm); padding: 9px 13px; box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--gray-700); }
     .ftag-1 { top: -14px; right: -14px; animation: float 3s ease-in-out infinite; }
     .ftag-2 { bottom: -14px; left: -14px; animation: float 3s ease-in-out 1.5s infinite; }
     .ftag-icon { width: 26px; height: 26px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; }
 
     /* ── TRUST BAR ──────────────────────────────────────── */
-    .trust-bar {
-      background: var(--gray-50); border-bottom: 1px solid var(--gray-200);
-      padding: 16px 40px; display: flex; align-items: center; justify-content: center;
-      gap: 40px; flex-wrap: wrap;
-    }
+    .trust-bar { background: var(--gray-50); border-bottom: 1px solid var(--gray-200); padding: 16px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
     .trust-stat { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray-500); font-weight: 500; }
     .trust-stat strong { font-size: 14px; font-weight: 800; color: var(--gray-900); }
     .trust-div { width: 1px; height: 22px; background: var(--gray-200); }
 
-    /* ── LIFETIME VALUE BAR ─────────────────────────────── */
-    .value-bar {
-      background: var(--blue-light);
-      border-bottom: 1px solid #c7dcff;
-      padding: 12px 40px;
-      display: flex; align-items: center; justify-content: center;
-      gap: 32px; flex-wrap: wrap;
-    }
-    .value-item {
-      display: flex; align-items: center; gap: 7px;
-      font-size: 13px; font-weight: 600; color: var(--blue-dark);
-    }
+    /* ── VALUE BAR ──────────────────────────────────────── */
+    .value-bar { background: var(--blue-light); border-bottom: 1px solid #c7dcff; padding: 12px 40px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .value-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--blue-dark); }
     .value-item svg { color: var(--blue); flex-shrink: 0; }
 
     /* ── SECTION ────────────────────────────────────────── */
@@ -247,60 +221,24 @@
     /* ── CATEGORY PILLS ─────────────────────────────────── */
     .cats-section { background: var(--white); padding: 48px 40px 0; }
     .cat-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
-    .cat-pill {
-      padding: 7px 18px; border-radius: 24px; border: 1.5px solid var(--gray-200);
-      font-size: 13px; font-weight: 600; color: var(--gray-600); cursor: pointer;
-      transition: all 0.18s; background: var(--white);
-    }
+    .cat-pill { padding: 7px 18px; border-radius: 24px; border: 1.5px solid var(--gray-200); font-size: 13px; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all 0.18s; background: var(--white); }
     .cat-pill:hover { border-color: var(--blue); color: var(--blue); }
     .cat-pill.active { background: var(--blue); border-color: var(--blue); color: var(--white); }
 
     /* ── COURSE CARDS ───────────────────────────────────── */
     .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 20px; }
-    .course-card {
-      background: var(--white); border: 1.5px solid var(--gray-200); border-radius: var(--radius);
-      overflow: hidden; cursor: pointer; display: flex; flex-direction: column;
-      transition: box-shadow 0.25s var(--ease), transform 0.2s var(--ease), border-color 0.2s;
-      opacity: 0; transform: translateY(14px);
-    }
+    .course-card { background: var(--white); border: 1.5px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; cursor: pointer; display: flex; flex-direction: column; transition: box-shadow 0.25s var(--ease), transform 0.2s var(--ease), border-color 0.2s; opacity: 0; transform: translateY(14px); }
     .course-card.visible { animation: fadeUp 0.5s var(--ease) forwards; }
     .course-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: transparent; }
-
-    .card-thumb {
-      height: 160px; position: relative; overflow: hidden; flex-shrink: 0;
-      background: var(--gray-100);
-    }
-    .card-thumb img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.4s var(--ease);
-    }
+    .card-thumb { height: 160px; position: relative; overflow: hidden; flex-shrink: 0; background: var(--gray-100); }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s var(--ease); }
     .course-card:hover .card-thumb img { transform: scale(1.04); }
-    .card-thumb-fallback {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center; font-size: 44px;
-    }
-    .card-overlay {
-      position: absolute; inset: 0; background: rgba(0,0,0,0.3);
-      opacity: 0; transition: opacity 0.2s;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .card-thumb-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 44px; }
+    .card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s; display: flex; align-items: center; justify-content: center; }
     .course-card:hover .card-overlay { opacity: 1; }
-    .preview-btn {
-      background: var(--white); color: var(--gray-900); font-family: var(--font);
-      font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: var(--radius-sm);
-      display: flex; align-items: center; gap: 5px;
-      transform: translateY(5px); transition: transform 0.2s;
-    }
+    .preview-btn { background: var(--white); color: var(--gray-900); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 5px; transform: translateY(5px); transition: transform 0.2s; }
     .course-card:hover .preview-btn { transform: translateY(0); }
-
-    .recorded-badge {
-      position: absolute; bottom: 8px; left: 8px;
-      background: rgba(0,0,0,0.7); color: var(--white);
-      font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
-      padding: 3px 8px; border-radius: 4px;
-      display: flex; align-items: center; gap: 4px;
-    }
-
+    .recorded-badge { position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px; }
     .card-body { padding: 15px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 7px; }
     .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
     .card-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; padding: 3px 8px; border-radius: 4px; }
@@ -324,12 +262,7 @@
 
     /* ── PROMO BANNER ───────────────────────────────────── */
     .promo-wrap { padding: 0 40px 60px; }
-    .promo-banner {
-      background: linear-gradient(135deg, var(--blue) 0%, #2275f5 50%, var(--blue-dark) 100%);
-      border-radius: var(--radius); padding: 44px 52px;
-      display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
-      position: relative; overflow: hidden;
-    }
+    .promo-banner { background: linear-gradient(135deg, var(--blue) 0%, #2275f5 50%, var(--blue-dark) 100%); border-radius: var(--radius); padding: 44px 52px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; position: relative; overflow: hidden; }
     .promo-banner::before { content: ''; position: absolute; right: -50px; top: -50px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.06); }
     .promo-banner::after { content: ''; position: absolute; left: 33%; bottom: -70px; width: 170px; height: 170px; border-radius: 50%; background: rgba(255,255,255,0.04); }
     .promo-text { position: relative; z-index: 1; }
@@ -343,27 +276,20 @@
     .promo-price-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
     .promo-price-value { font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; }
     .promo-price-was { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: line-through; margin-top: 2px; }
-    .btn-promo {
-      background: var(--white); color: var(--blue-dark); font-family: var(--font);
-      font-size: 14px; font-weight: 700; padding: 13px 28px; border-radius: var(--radius-sm);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s, box-shadow 0.2s; display: block;
-    }
+    .btn-promo { background: var(--white); color: var(--blue-dark); font-family: var(--font); font-size: 14px; font-weight: 700; padding: 13px 28px; border-radius: var(--radius-sm); box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s, box-shadow 0.2s; display: block; }
     .btn-promo:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
 
     /* ── HOW IT WORKS ───────────────────────────────────── */
     .how-section { background: var(--gray-50); }
     .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
-    .step-card {
-      background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 26px 22px;
-      opacity: 0; transform: translateY(14px);
-    }
+    .step-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 26px 22px; opacity: 0; transform: translateY(14px); }
     .step-card.visible { animation: fadeUp 0.5s var(--ease) forwards; }
     .step-num { width: 34px; height: 34px; border-radius: 9px; background: var(--blue-light); color: var(--blue); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
     .step-icon { font-size: 22px; margin-bottom: 10px; }
     .step-title { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 7px; }
     .step-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
 
-    /* ── MODAL ──────────────────────────────────────────── */
+    /* ── SHARED MODAL STYLES ────────────────────────────── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(17,24,39,0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease); }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
     .modal {
@@ -374,22 +300,13 @@
       display: flex; flex-direction: column; box-shadow: -8px 0 48px rgba(0,0,0,0.18);
     }
     .modal.open { transform: translateX(0); }
-    .modal-thumb {
-      height: 200px; position: relative; overflow: hidden; flex-shrink: 0;
-      background: var(--gray-100);
-    }
+
+    /* ── COURSE MODAL ───────────────────────────────────── */
+    .modal-thumb { height: 200px; position: relative; overflow: hidden; flex-shrink: 0; background: var(--gray-100); }
     .modal-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .modal-thumb-fallback {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center; font-size: 60px;
-    }
+    .modal-thumb-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 60px; }
     .modal-thumb-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.45) 100%); }
-    .modal-close {
-      position: absolute; top: 12px; right: 12px;
-      width: 32px; height: 32px; background: rgba(0,0,0,0.45); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; color: var(--white);
-      z-index: 10; transition: background 0.2s;
-    }
+    .modal-close { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; background: rgba(0,0,0,0.45); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); z-index: 10; transition: background 0.2s; }
     .modal-close:hover { background: rgba(0,0,0,0.75); }
     .modal-header { padding: 18px 22px 14px; border-bottom: 1px solid var(--gray-100); flex-shrink: 0; }
     .modal-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
@@ -399,22 +316,12 @@
     .mpnow { font-size: 1.45rem; font-weight: 800; color: var(--gray-900); }
     .mpwas { font-size: 13px; color: var(--gray-400); text-decoration: line-through; }
     .mpbadge { background: #fee2e2; color: #b91c1c; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-
     .modal-body { flex: 1; overflow-y: auto; padding: 18px 22px; }
     .modal-body::-webkit-scrollbar { width: 4px; }
     .modal-body::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
-
-    .lifetime-strip {
-      background: var(--blue-light);
-      border: 1px solid #c7dcff;
-      border-radius: var(--radius-sm);
-      padding: 12px 14px;
-      display: flex; gap: 16px; flex-wrap: wrap;
-      margin-bottom: 4px;
-    }
+    .lifetime-strip { background: var(--blue-light); border: 1px solid #c7dcff; border-radius: var(--radius-sm); padding: 12px 14px; display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
     .ls-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--blue-dark); }
     .ls-item svg { color: var(--blue); flex-shrink: 0; }
-
     .mlabel { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 9px; margin-top: 18px; }
     .mlabel:first-child { margin-top: 0; }
     .modal-desc { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
@@ -426,20 +333,39 @@
     .outcome-row { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--gray-700); line-height: 1.5; }
     .ocheck { width: 17px; height: 17px; border-radius: 50%; background: var(--blue-light); color: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 
-    /* ── FORM ───────────────────────────────────────────── */
+    /* ── TUTOR MODAL ────────────────────────────────────── */
+    .tutor-modal-head {
+      padding: 28px 24px 20px; border-bottom: 1px solid var(--gray-100); flex-shrink: 0;
+      background: linear-gradient(135deg, #060e1f 0%, #0d1f4a 100%);
+      position: relative;
+    }
+    .tutor-modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: var(--white);
+      transition: background 0.2s;
+    }
+    .tutor-modal-close:hover { background: rgba(255,255,255,0.3); }
+    .tutor-modal-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 8px; }
+    .tutor-modal-title { font-size: 1.3rem; font-weight: 800; color: var(--white); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .tutor-modal-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* ── SHARED FORM STYLES ─────────────────────────────── */
     .form-box { background: var(--gray-50); border: 1.5px solid var(--gray-200); border-radius: var(--radius); padding: 18px; margin-top: 6px; }
     .form-box-title { font-size: 14px; font-weight: 800; color: var(--gray-900); margin-bottom: 3px; }
     .form-box-sub { font-size: 12px; color: var(--gray-500); margin-bottom: 14px; }
-    .form-row { margin-bottom: 10px; }
+    .form-row { margin-bottom: 12px; }
     .form-label { display: block; font-size: 11px; font-weight: 700; color: var(--gray-700); margin-bottom: 4px; letter-spacing: 0.02em; }
-    .form-input {
+    .form-input, .form-select, .form-textarea {
       width: 100%; padding: 10px 13px; border: 1.5px solid var(--gray-200); border-radius: var(--radius-sm);
       font-family: var(--font); font-size: 14px; color: var(--gray-900); background: var(--white);
       outline: none; transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .form-input::placeholder { color: var(--gray-400); }
-    .form-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(58,134,255,0.1); }
-    .form-input.err { border-color: #ef4444; }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--gray-400); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(58,134,255,0.1); }
+    .form-input.err, .form-select.err, .form-textarea.err { border-color: #ef4444; }
+    .form-select { appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
     .form-err { font-size: 11px; color: #ef4444; font-weight: 500; margin-top: 3px; display: none; }
     .form-err.show { display: block; }
     .hp-field { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
@@ -457,8 +383,6 @@
     .btn-register.loading .spinner { display: block; }
     .btn-register.loading .blabel { display: none; }
     .form-guar { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; color: var(--gray-400); margin-top: 9px; }
-
-    /* ── SUCCESS ────────────────────────────────────────── */
     .success-box { display: none; text-align: center; padding: 28px 12px; }
     .success-box.show { display: block; }
     .s-emoji { font-size: 44px; margin-bottom: 13px; }
@@ -485,8 +409,9 @@
 
     /* ── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; }
+      nav { padding: 0 16px; gap: 10px; }
       .nav-search { display: none; }
+      .btn-tutor { display: none; }
       .hero { grid-template-columns: 1fr; padding: 48px 24px 52px; }
       .hero-visual { display: none; }
       .trust-bar { padding: 12px 20px; gap: 16px; }
@@ -531,6 +456,7 @@
       <input type="search" placeholder="Найти курс..." aria-label="Поиск курсов" />
     </div>
     <div class="nav-actions">
+      <button class="btn-tutor" id="btn-open-tutor">Стать преподавателем</button>
       <a href="#courses" class="btn-ghost">Все курсы</a>
       <a href="#courses" class="btn-blue">Начать учиться</a>
     </div>
@@ -561,20 +487,15 @@
         </div>
       </div>
     </div>
-
     <div class="hero-visual" aria-hidden="true">
       <div style="position:relative;padding:18px">
         <div class="hero-card">
-          <img class="hero-card-img" src="course-python.webp" alt="Python курс"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <img class="hero-card-img" src="course-python.webp" alt="Python курс" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
           <div class="hero-card-img-fallback" style="display:none">🐍</div>
           <div class="hero-card-body">
             <div class="hero-card-cat">Программирование</div>
             <div class="hero-card-title">Python с нуля до Junior — выйди на первую работу в IT</div>
-            <div class="hero-card-meta">
-              <span>📹 14.5 часов видео</span>
-              <span>♾️ Навсегда</span>
-            </div>
+            <div class="hero-card-meta"><span>📹 14.5 часов видео</span><span>♾️ Навсегда</span></div>
             <div class="hero-card-rating">
               <span class="stars">★★★★★</span>
               <span class="rating-num">4.9</span>
@@ -605,11 +526,11 @@
   <div class="trust-bar">
     <div class="trust-stat"><strong>1 500+</strong> Студентов</div>
     <div class="trust-div" aria-hidden="true"></div>
-    <div class="trust-stat"><strong>21</strong> Видеокурс</div>
+    <div class="trust-stat"><strong>12</strong> Видеокурсов</div>
     <div class="trust-div" aria-hidden="true"></div>
     <div class="trust-stat"><strong>4.8 ★</strong> Средний рейтинг</div>
     <div class="trust-div" aria-hidden="true"></div>
-    <div class="trust-stat"><strong>220+</strong> Часов видео</div>
+    <div class="trust-stat"><strong>160+</strong> Часов видео</div>
   </div>
 
   <!-- VALUE BAR -->
@@ -644,11 +565,9 @@
       <button class="cat-pill active" data-cat="all" role="tab" aria-selected="true">Все</button>
       <button class="cat-pill" data-cat="IT и разработка" role="tab" aria-selected="false">IT и разработка</button>
       <button class="cat-pill" data-cat="Маркетинг" role="tab" aria-selected="false">Маркетинг</button>
-      <button class="cat-pill" data-cat="Бизнес" role="tab" aria-selected="false">Бизнес</button>
       <button class="cat-pill" data-cat="Дизайн" role="tab" aria-selected="false">Дизайн</button>
       <button class="cat-pill" data-cat="Финансы и право" role="tab" aria-selected="false">Финансы и право</button>
       <button class="cat-pill" data-cat="Языки" role="tab" aria-selected="false">Языки</button>
-      <button class="cat-pill" data-cat="Soft skills" role="tab" aria-selected="false">Soft skills</button>
       <button class="cat-pill" data-cat="Экзамены" role="tab" aria-selected="false">Экзамены</button>
     </div>
   </div>
@@ -698,26 +617,10 @@
       </div>
     </div>
     <div class="steps-grid">
-      <div class="step-card" data-delay="0">
-        <div class="step-num">01</div><div class="step-icon">🎯</div>
-        <div class="step-title">Выберите курс</div>
-        <div class="step-desc">Просмотрите каталог, выберите направление и оставьте заявку — мы свяжемся с вами.</div>
-      </div>
-      <div class="step-card" data-delay="70">
-        <div class="step-num">02</div><div class="step-icon">💳</div>
-        <div class="step-title">Получите доступ</div>
-        <div class="step-desc">Сразу после оплаты — полный доступ ко всем видеоурокам. Навсегда, без ограничений.</div>
-      </div>
-      <div class="step-card" data-delay="140">
-        <div class="step-num">03</div><div class="step-icon">📱</div>
-        <div class="step-title">Учитесь в своём темпе</div>
-        <div class="step-desc">Смотрите уроки когда удобно. Ставьте паузу, возвращайтесь, пересматривайте сколько угодно.</div>
-      </div>
-      <div class="step-card" data-delay="210">
-        <div class="step-num">04</div><div class="step-icon">🏆</div>
-        <div class="step-title">Получите сертификат</div>
-        <div class="step-desc">По завершении курса — сертификат BilimTap, который ценится на казахстанском рынке труда.</div>
-      </div>
+      <div class="step-card" data-delay="0"><div class="step-num">01</div><div class="step-icon">🎯</div><div class="step-title">Выберите курс</div><div class="step-desc">Просмотрите каталог, выберите направление и оставьте заявку — мы свяжемся с вами.</div></div>
+      <div class="step-card" data-delay="70"><div class="step-num">02</div><div class="step-icon">💳</div><div class="step-title">Получите доступ</div><div class="step-desc">Сразу после оплаты — полный доступ ко всем видеоурокам. Навсегда, без ограничений.</div></div>
+      <div class="step-card" data-delay="140"><div class="step-num">03</div><div class="step-icon">📱</div><div class="step-title">Учитесь в своём темпе</div><div class="step-desc">Смотрите уроки когда удобно. Ставьте паузу, возвращайтесь, пересматривайте сколько угодно.</div></div>
+      <div class="step-card" data-delay="210"><div class="step-num">04</div><div class="step-icon">🏆</div><div class="step-title">Получите сертификат</div><div class="step-desc">По завершении курса — сертификат BilimTap, который ценится на казахстанском рынке труда.</div></div>
     </div>
   </section>
 
@@ -732,7 +635,7 @@
         <div>
           <div class="footer-col-title">Популярные курсы</div>
           <a class="footer-link" href="#courses">Python с нуля</a>
-          <a class="footer-link" href="#courses">Frontend разработка</a>
+          <a class="footer-link" href="#courses">1С разработка</a>
           <a class="footer-link" href="#courses">SMM и таргетинг</a>
           <a class="footer-link" href="#courses">AI и ChatGPT</a>
           <a class="footer-link" href="#courses">Казахский язык</a>
@@ -741,7 +644,7 @@
         <div>
           <div class="footer-col-title">Компания</div>
           <a class="footer-link" href="#">О нас</a>
-          <a class="footer-link" href="#">Преподаватели</a>
+          <a class="footer-link" href="#" id="footer-tutor-link">Стать преподавателем</a>
           <a class="footer-link" href="#">Контакты</a>
         </div>
       </div>
@@ -752,11 +655,11 @@
     </div>
   </footer>
 
-  <!-- MODAL OVERLAY -->
+  <!-- SHARED MODAL OVERLAY -->
   <div class="modal-overlay" id="modal-overlay" role="presentation"></div>
 
-  <!-- MODAL -->
-  <div class="modal" id="course-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <!-- COURSE MODAL -->
+  <div class="modal" id="course-modal" role="dialog" aria-modal="true" aria-labelledby="modal-course-title">
     <div class="modal-thumb" id="modal-thumb">
       <button class="modal-close" id="modal-close" aria-label="Закрыть">
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 1l9 9M10 1L1 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -765,7 +668,7 @@
     </div>
     <div class="modal-header">
       <div class="modal-cat" id="modal-cat"></div>
-      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-title" id="modal-course-title"></div>
       <div class="modal-rrow">
         <span class="card-stars" style="font-size:12px">★★★★★</span>
         <span class="card-rnum" id="m-rating"></span>
@@ -779,35 +682,18 @@
       </div>
     </div>
     <div class="modal-body">
-
       <div class="lifetime-strip">
-        <div class="ls-item">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3v3l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-          Доступ навсегда
-        </div>
-        <div class="ls-item">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1l1.2 3.5H11l-3 2.2 1.2 3.5L6 8l-3.2 2.2L4 6.7 1 4.5h3.8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          Сертификат
-        </div>
-        <div class="ls-item">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 3h8M2 6h6M2 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-          Своё расписание
-        </div>
-        <div class="ls-item">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1a3 3 0 013 3c0 3-3 7-3 7S3 7 3 4a3 3 0 013-3z" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="4.5" r="1" fill="currentColor"/></svg>
-          Уведомления
-        </div>
+        <div class="ls-item"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3v3l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Доступ навсегда</div>
+        <div class="ls-item"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1l1.2 3.5H11l-3 2.2 1.2 3.5L6 8l-3.2 2.2L4 6.7 1 4.5h3.8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Сертификат</div>
+        <div class="ls-item"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 3h8M2 6h6M2 9h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Своё расписание</div>
+        <div class="ls-item"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1a3 3 0 013 3c0 3-3 7-3 7S3 7 3 4a3 3 0 013-3z" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="4.5" r="1" fill="currentColor"/></svg>Уведомления</div>
       </div>
-
       <div class="mlabel">О курсе</div>
       <p class="modal-desc" id="m-desc"></p>
-
       <div class="mlabel">Детали курса</div>
       <div class="meta-grid" id="m-meta"></div>
-
       <div class="mlabel">Чему вы научитесь</div>
       <div class="outcomes" id="m-outcomes"></div>
-
       <div class="mlabel">Оставить заявку</div>
       <div class="form-box" id="form-box">
         <div class="form-box-title">Хочу купить этот курс</div>
@@ -833,11 +719,95 @@
           Мы не передаём ваши данные третьим лицам
         </div>
       </div>
-
       <div class="success-box" id="success-box" role="status">
         <div class="s-emoji">🎉</div>
         <div class="s-title">Заявка принята!</div>
         <p class="s-desc">Наш менеджер свяжется с вами в WhatsApp в течение нескольких часов, ответит на вопросы и пришлёт ссылку на оплату.<br/><br/>До встречи на курсе!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TUTOR MODAL -->
+  <div class="modal" id="tutor-modal" role="dialog" aria-modal="true" aria-labelledby="tutor-modal-title">
+    <div class="tutor-modal-head">
+      <button class="tutor-modal-close" id="tutor-close" aria-label="Закрыть">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 1l9 9M10 1L1 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="tutor-modal-eyebrow">Для преподавателей</div>
+      <div class="tutor-modal-title" id="tutor-modal-title">Станьте частью BilimTap</div>
+      <div class="tutor-modal-sub">Вы знаете своё дело — мы возьмём на себя платформу, продвижение и студентов. Расскажите о себе.</div>
+    </div>
+    <div class="modal-body">
+      <div id="tutor-form-wrapper">
+        <div style="position:relative">
+          <div class="form-row">
+            <label class="form-label" for="t-name">Ваше имя <span style="color:var(--blue)">*</span></label>
+            <input class="form-input" type="text" id="t-name" placeholder="Данияр Сейткали" autocomplete="given-name" />
+            <div class="form-err" id="t-name-err">Укажите ваше имя</div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="t-phone">WhatsApp / Телефон <span style="color:var(--blue)">*</span></label>
+            <input class="form-input" type="tel" id="t-phone" placeholder="+7 777 123 45 67" autocomplete="tel" />
+            <div class="form-err" id="t-phone-err">Укажите номер телефона</div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="t-email">Email</label>
+            <input class="form-input" type="email" id="t-email" placeholder="daniyar@gmail.com" autocomplete="email" />
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="t-profession">Область экспертизы <span style="color:var(--blue)">*</span></label>
+            <select class="form-select" id="t-profession">
+              <option value="" disabled selected>Выберите направление</option>
+              <option value="it-dev">IT / Разработка</option>
+              <option value="data">Аналитика / Data Science</option>
+              <option value="design">Дизайн / UX/UI</option>
+              <option value="marketing">Маркетинг / SMM</option>
+              <option value="business">Бизнес / Предпринимательство</option>
+              <option value="finance">Финансы / Бухгалтерия / 1С</option>
+              <option value="languages">Языки (английский, казахский и др.)</option>
+              <option value="religion">Религиозное образование</option>
+              <option value="exam-prep">Подготовка к экзаменам (IELTS, SAT и др.)</option>
+              <option value="other">Другое</option>
+            </select>
+            <div class="form-err" id="t-prof-err">Выберите направление</div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="t-exp">Опыт работы по специальности <span style="color:var(--blue)">*</span></label>
+            <select class="form-select" id="t-exp">
+              <option value="" disabled selected>Выберите стаж</option>
+              <option value="less-1">Менее 1 года</option>
+              <option value="1-3">1–3 года</option>
+              <option value="3-5">3–5 лет</option>
+              <option value="5-plus">Более 5 лет</option>
+            </select>
+            <div class="form-err" id="t-exp-err">Выберите стаж</div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="t-idea">Какой курс вы хотели бы создать? <span style="color:var(--blue)">*</span></label>
+            <input class="form-input" type="text" id="t-idea" placeholder="Например: Python для аналитиков данных" />
+            <div class="form-err" id="t-idea-err">Опишите идею курса</div>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="t-about">О себе и вашем опыте <span style="color:var(--blue)">*</span></label>
+            <textarea class="form-textarea" id="t-about" placeholder="Расскажите о своём профессиональном опыте, где работали, чем занимались, что умеете лучше всего..."></textarea>
+            <div class="form-err" id="t-about-err">Расскажите о себе</div>
+          </div>
+          <!-- Honeypot -->
+          <div class="hp-field" aria-hidden="true"><input type="text" id="t-hp" name="website" tabindex="-1" autocomplete="off" /></div>
+        </div>
+        <button class="btn-register" id="btn-tutor-submit" type="button">
+          <span class="blabel">Отправить заявку &nbsp;→</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+        <div class="form-guar">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1L1 3v3.5C1 8.8 3 10.5 5.5 11 8 10.5 10 8.8 10 6.5V3L5.5 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          Ваши данные в безопасности — мы свяжемся в течение 48 часов
+        </div>
+      </div>
+      <div class="success-box" id="tutor-success" role="status">
+        <div class="s-emoji">🤝</div>
+        <div class="s-title">Заявка получена!</div>
+        <p class="s-desc">Мы изучим вашу анкету и свяжемся в WhatsApp в течение 48 часов. Спасибо, что хотите стать частью BilimTap.</p>
       </div>
     </div>
   </div>
@@ -848,448 +818,130 @@
 
     const BACKEND = 'https://bilimtapbackend-production.up.railway.app';
 
-    // ─────────────────────────────────────────────────────
-    // COURSES — 21 курс
-    //
-    // Новые файлы изображений (добавить в папку с index.html):
-    //   course-kazakh.webp    → Казахский язык
-    //   course-english.webp   → Английский для делового общения
-    //   course-tajwid.png    → Таджвид
-    //
-    // Все остальные файлы — без изменений (см. предыдущую версию)
-    // ─────────────────────────────────────────────────────
     const COURSES = [
-
-      // ── БЛОК 1: ГОРЯЧИЕ / БИЗНЕС ────────────────────────
       {
-        id: 'python-basics',
-        category: 'IT и разработка',
-        image: 'course-python.webp',
-        emoji: '🐍',
-        fallbackBg: 'linear-gradient(135deg,#3A86FF,#1a6fef)',
+        id: 'python-basics', category: 'IT и разработка',
+        image: 'course-python.webp', emoji: '🐍', fallbackBg: 'linear-gradient(135deg,#3A86FF,#1a6fef)',
         tag: 'bs', tagLabel: 'Бестселлер',
         title: 'Python с нуля до Junior — выйди на первую работу в IT за 8 недель',
-        instructor: 'Данияр Сейткали',
-        rating: '4.9', reviews: '(214 отзыва)', students: '· 520 студентов',
-        pnow: '7 500 ₸', pwas: '15 000 ₸',
-        hours: '14.5', lectures: '62', level: 'С нуля',
+        instructor: 'Данияр Сейткали', rating: '4.9', reviews: '(214 отзыва)', students: '· 520 студентов',
+        pnow: '7 500 ₸', pwas: '15 000 ₸', hours: '14.5', lectures: '62', level: 'С нуля',
         desc: 'Самый полный Python-курс на казахстанском рынке. За 8 недель вы пройдёте путь от первой строки кода до готового портфолио и подготовки к техническому собеседованию. Все задачи — на реальных данных казахстанских компаний.',
-        outcomes: [
-          'Пишете Python-скрипты и автоматизируете рутину',
-          'Работаете с файлами, API и базами данных',
-          'Собираете портфолио из 3 реальных проектов',
-          'Готовы к собеседованию на Junior-позицию',
-        ],
+        outcomes: ['Пишете Python-скрипты и автоматизируете рутину','Работаете с файлами, API и базами данных','Собираете портфолио из 3 реальных проектов','Готовы к собеседованию на Junior-позицию'],
       },
       {
-        id: 'smm-marketing',
-        category: 'Маркетинг',
-        image: 'course-smm.webp',
-        emoji: '📱',
-        fallbackBg: 'linear-gradient(135deg,#f59e0b,#d97706)',
+        id: 'smm-marketing', category: 'Маркетинг',
+        image: 'course-smm.webp', emoji: '📱', fallbackBg: 'linear-gradient(135deg,#f59e0b,#d97706)',
         tag: 'ht', tagLabel: 'Горячий',
         title: 'SMM и таргетинг 2026: клиенты из Instagram и TikTok с нуля',
-        instructor: 'Сандугаш Нурова',
-        rating: '4.8', reviews: '(189 отзывов)', students: '· 430 студентов',
-        pnow: '6 500 ₸', pwas: '13 000 ₸',
-        hours: '9.5', lectures: '41', level: 'С нуля',
+        instructor: 'Сандугаш Нурова', rating: '4.8', reviews: '(189 отзывов)', students: '· 430 студентов',
+        pnow: '6 500 ₸', pwas: '13 000 ₸', hours: '9.5', lectures: '41', level: 'С нуля',
         desc: 'Практический курс с упором на казахстанский рынок. Вы научитесь привлекать реальные заявки через Instagram и TikTok, разберёте кейсы местных брендов и научитесь запускать таргет с ROI от первого месяца.',
-        outcomes: [
-          'Создаёте контент-план и ведёте Instagram бренда',
-          'Снимаете и монтируете Reels и TikTok, которые продают',
-          'Запускаете таргет на КЗ-аудиторию с реальными заявками',
-          'Берёте первых клиентов на SMM-ведение',
-        ],
+        outcomes: ['Создаёте контент-план и ведёте Instagram бренда','Снимаете и монтируете Reels и TikTok, которые продают','Запускаете таргет на КЗ-аудиторию с реальными заявками','Берёте первых клиентов на SMM-ведение'],
       },
       {
-        id: 'taxes-ip',
-        category: 'Финансы и право',
-        image: 'course-taxes.webp',
-        emoji: '🧾',
-        fallbackBg: 'linear-gradient(135deg,#64748b,#475569)',
+        id: 'taxes-ip', category: 'Финансы и право',
+        image: 'course-taxes.webp', emoji: '🧾', fallbackBg: 'linear-gradient(135deg,#64748b,#475569)',
         tag: 'nw', tagLabel: 'Новый 2026',
         title: 'Новый налоговый кодекс РК для ИП 2026 — без штрафов и переплат',
-        instructor: 'Асель Джаксыбекова',
-        rating: '4.9', reviews: '(97 отзывов)', students: '· 280 студентов',
-        pnow: '4 900 ₸', pwas: '9 800 ₸',
-        hours: '6', lectures: '28', level: 'Для ИП',
-        desc: 'Разберитесь в новом налоговом кодексе РК за один день. Курс создан специально для индивидуальных предпринимателей: упрощёнка, патент, НДС, кассы — всё на конкретных примерах. Узнайте, как легально сэкономить и не получить штраф.',
-        outcomes: [
-          'Понимаете разницу между режимами налогообложения',
-          'Правильно рассчитываете и платите налоги без переплат',
-          'Знаете все изменения кодекса 2026 года',
-          'Экономите на налогах законными методами',
-        ],
+        instructor: 'Асель Джаксыбекова', rating: '4.9', reviews: '(97 отзывов)', students: '· 280 студентов',
+        pnow: '4 900 ₸', pwas: '9 800 ₸', hours: '6', lectures: '28', level: 'Для ИП',
+        desc: 'Разберитесь в новом налоговом кодексе РК за один день. Курс создан специально для индивидуальных предпринимателей: упрощёнка, патент, НДС, кассы — всё на конкретных примерах.',
+        outcomes: ['Понимаете разницу между режимами налогообложения','Правильно рассчитываете и платите налоги без переплат','Знаете все изменения кодекса 2026 года','Экономите на налогах законными методами'],
       },
       {
-        id: 'ai-money',
-        category: 'IT и разработка',
-        image: 'course-ai.webp',
-        emoji: '🤖',
-        fallbackBg: 'linear-gradient(135deg,#7c3aed,#5b21b6)',
+        id: 'ai-money', category: 'IT и разработка',
+        image: 'course-ai.webp', emoji: '🤖', fallbackBg: 'linear-gradient(135deg,#7c3aed,#5b21b6)',
         tag: 'ht', tagLabel: 'Тренд',
         title: 'Зарабатывай на AI: ChatGPT и Midjourney — от 0 до первых клиентов',
-        instructor: 'Нурлан Ахметов',
-        rating: '4.8', reviews: '(156 отзывов)', students: '· 380 студентов',
-        pnow: '7 000 ₸', pwas: '14 000 ₸',
-        hours: '10', lectures: '44', level: 'С нуля',
+        instructor: 'Нурлан Ахметов', rating: '4.8', reviews: '(156 отзывов)', students: '· 380 студентов',
+        pnow: '7 000 ₸', pwas: '14 000 ₸', hours: '10', lectures: '44', level: 'С нуля',
         desc: 'Самая горячая тема 2026 года. Научитесь зарабатывать с помощью AI-инструментов: автоматизируйте бизнес-процессы, создавайте контент с Midjourney и выходите на фриланс с навыками, за которые уже сейчас платят хорошие деньги.',
-        outcomes: [
-          'Используете ChatGPT для автоматизации задач бизнеса',
-          'Создаёте коммерческий визуал с Midjourney',
-          'Берёте первых клиентов на AI-услуги на фрилансе',
-          'Автоматизируете рутину и экономите время',
-        ],
+        outcomes: ['Используете ChatGPT для автоматизации задач бизнеса','Создаёте коммерческий визуал с Midjourney','Берёте первых клиентов на AI-услуги на фрилансе','Автоматизируете рутину и экономите время'],
       },
       {
-        id: 'kaspi-marketplace',
-        category: 'Бизнес',
-        image: 'course-kaspi.webp',
-        emoji: '🛒',
-        fallbackBg: 'linear-gradient(135deg,#ef4444,#dc2626)',
-        tag: 'bs', tagLabel: 'Бестселлер',
-        title: 'Kaspi и маркетплейсы: запусти свой онлайн-бизнес за 14 дней',
-        instructor: 'Бауыржан Сейткали',
-        rating: '4.7', reviews: '(203 отзыва)', students: '· 460 студентов',
-        pnow: '7 500 ₸', pwas: '15 000 ₸',
-        hours: '11', lectures: '49', level: 'С нуля',
-        desc: 'Пошаговое руководство по запуску магазина на Kaspi.kz, Wildberries и Ozon. Вы узнаете, как выбрать нишу, найти поставщика, оформить карточки и получить первые продажи уже через две недели после старта.',
-        outcomes: [
-          'Открываете и настраиваете магазин на Kaspi.kz',
-          'Выбираете прибыльную нишу и находите поставщика',
-          'Создаёте карточки товаров, которые продают',
-          'Выходите на Wildberries и Ozon с казахстанских аккаунтов',
-        ],
-      },
-      {
-        id: 'ux-ui-design',
-        category: 'Дизайн',
-        image: 'course-uxui.webp',
-        emoji: '🎨',
-        fallbackBg: 'linear-gradient(135deg,#ec4899,#be185d)',
+        id: 'ux-ui-design', category: 'Дизайн',
+        image: 'course-uxui.webp', emoji: '🎨', fallbackBg: 'linear-gradient(135deg,#ec4899,#be185d)',
         tag: 'nw', tagLabel: 'Новый',
         title: 'UX/UI дизайн с нуля — портфолио и первые клиенты за 10 недель',
-        instructor: 'Мадина Касымова',
-        rating: '4.8', reviews: '(88 отзывов)', students: '· 210 студентов',
-        pnow: '8 000 ₸', pwas: '16 000 ₸',
-        hours: '16', lectures: '68', level: 'С нуля',
-        desc: 'Полный курс по UX/UI дизайну с акцентом на Figma и реальные проекты. Вы разберёте принципы пользовательского опыта, научитесь проектировать интерфейсы и соберёте портфолио из трёх кейсов, с которым уже можно идти к клиентам.',
-        outcomes: [
-          'Уверенно работаете в Figma как профессионал',
-          'Проектируете удобные интерфейсы по принципам UX',
-          'Собираете портфолио из трёх полноценных кейсов',
-          'Находите первых клиентов и выходите на фриланс',
-        ],
+        instructor: 'Мадина Касымова', rating: '4.8', reviews: '(88 отзывов)', students: '· 210 студентов',
+        pnow: '8 000 ₸', pwas: '16 000 ₸', hours: '16', lectures: '68', level: 'С нуля',
+        desc: 'Полный курс по UX/UI дизайну с акцентом на Figma и реальные проекты. Вы разберёте принципы пользовательского опыта, научитесь проектировать интерфейсы и соберёте портфолио из трёх кейсов.',
+        outcomes: ['Уверенно работаете в Figma как профессионал','Проектируете удобные интерфейсы по принципам UX','Собираете портфолио из трёх полноценных кейсов','Находите первых клиентов и выходите на фриланс'],
       },
       {
-        id: 'reels-photo',
-        category: 'Маркетинг',
-        image: 'course-reels.webp',
-        emoji: '🎬',
-        fallbackBg: 'linear-gradient(135deg,#f43f5e,#e11d48)',
-        tag: 'ht', tagLabel: 'Популярный',
-        title: 'Мобилография и Reels: снимай контент, который продаёт',
-        instructor: 'Айгерим Бекова',
-        rating: '4.7', reviews: '(134 отзыва)', students: '· 295 студентов',
-        pnow: '5 500 ₸', pwas: '11 000 ₸',
-        hours: '8', lectures: '36', level: 'С нуля',
-        desc: 'Научитесь снимать профессиональный контент на смартфон. Курс создан с учётом казахстанских реалий — вы освоите съёмку, монтаж и создание Reels, которые реально собирают охваты и приводят клиентов локальным брендам.',
-        outcomes: [
-          'Снимаете качественный контент на любой смартфон',
-          'Монтируете Reels и TikTok, которые набирают охваты',
-          'Строите контент-стратегию для локального бизнеса',
-          'Работаете с брендами как контент-мейкер',
-        ],
-      },
-      {
-        id: 'freelance-start',
-        category: 'Бизнес',
-        image: 'course-freelance.webp',
-        emoji: '💼',
-        fallbackBg: 'linear-gradient(135deg,#0ea5e9,#0284c7)',
-        tag: 'bs', tagLabel: 'Бестселлер',
-        title: 'Фриланс с нуля: выйди на $500–1000 в месяц удалённо',
-        instructor: 'Дамир Жумабеков',
-        rating: '4.8', reviews: '(177 отзывов)', students: '· 390 студентов',
-        pnow: '6 000 ₸', pwas: '12 000 ₸',
-        hours: '9', lectures: '39', level: 'С нуля',
-        desc: 'Практическое руководство по выходу на фриланс с нуля. Вы выберете нишу, упакуете себя как специалиста, зарегистрируетесь на Upwork и Kwork и получите первые заказы. Курс ориентирован на реальный доход, а не мотивационные речи.',
-        outcomes: [
-          'Выбираете прибыльную нишу под ваши навыки',
-          'Создаёте профиль на Upwork, Kwork и Freelancehunt',
-          'Пишете предложения, которые получают ответы',
-          'Выходите на стабильные $500+ в первый месяц',
-        ],
-      },
-      {
-        id: 'excel-analytics',
-        category: 'IT и разработка',
-        image: 'course-excel.webp',
-        emoji: '📊',
-        fallbackBg: 'linear-gradient(135deg,#10b981,#059669)',
-        tag: 'nw', tagLabel: 'Популярный',
-        title: 'Excel и аналитика для работы и бизнеса — от новичка до уверенного пользователя',
-        instructor: 'Нурлан Ахметов',
-        rating: '4.8', reviews: '(142 отзыва)', students: '· 320 студентов',
-        pnow: '5 000 ₸', pwas: '10 000 ₸',
-        hours: '10', lectures: '43', level: 'Начинающий',
-        desc: 'Excel — главный инструмент любого офиса. Вы освоите формулы, сводные таблицы, дашборды и научитесь анализировать данные для отчётов, которые повышают зарплату. Курс построен на реальных задачах казахстанского бизнеса.',
-        outcomes: [
-          'Уверенно работаете с формулами и функциями Excel',
-          'Строите сводные таблицы и автоматизируете отчёты',
-          'Создаёте дашборды для руководства',
-          'Анализируете продажи, KPI и финансовые данные',
-        ],
-      },
-      {
-        id: 'open-ip',
-        category: 'Бизнес',
-        image: 'course-ip.webp',
-        emoji: '🏢',
-        fallbackBg: 'linear-gradient(135deg,#f97316,#ea580c)',
-        tag: 'nw', tagLabel: 'Новый',
-        title: 'Открытие ИП в Казахстане + первые клиенты за 30 дней',
-        instructor: 'Асель Джаксыбекова',
-        rating: '4.9', reviews: '(71 отзыв)', students: '· 195 студентов',
-        pnow: '4 900 ₸', pwas: '9 800 ₸',
-        hours: '7', lectures: '31', level: 'Для всех',
-        desc: 'Всё, что нужно знать для старта своего бизнеса в Казахстане. Регистрация ИП через eGov за один день, выбор налогового режима, открытие счёта и первые продажи — разберём на практике от А до Я.',
-        outcomes: [
-          'Регистрируете ИП через eGov без лишних затрат',
-          'Выбираете выгодный налоговый режим',
-          'Открываете бизнес-счёт и настраиваете Kaspi Pay',
-          'Привлекаете первых клиентов уже в первый месяц',
-        ],
-      },
-
-      // ── БЛОК 2: IT и РАЗРАБОТКА ──────────────────────────
-      {
-        id: 'frontend-dev',
-        category: 'IT и разработка',
-        image: 'course-frontend.webp',
-        emoji: '💻',
-        fallbackBg: 'linear-gradient(135deg,#0d9488,#0d7377)',
-        tag: 'bs', tagLabel: 'Бестселлер',
-        title: 'Frontend разработка с нуля — стань Junior за 10 недель (HTML, CSS, JS, React)',
-        instructor: 'Айгерим Бекова',
-        rating: '4.7', reviews: '(98 отзывов)', students: '· 271 студент',
-        pnow: '8 500 ₸', pwas: '17 000 ₸',
-        hours: '22', lectures: '98', level: 'Начинающий',
-        desc: 'Полный путь от первой HTML-страницы до React-приложения в портфолио. Вы соберёте три реальных проекта, пройдёте mock-интервью с ментором и будете готовы к первому офферу на казахстанском IT-рынке.',
-        outcomes: [
-          'Верстаете адаптивные сайты с нуля',
-          'Пишете JavaScript и понимаете основы React',
-          'Собираете портфолио из трёх готовых проектов',
-          'Проходите техническое интервью уверенно',
-        ],
-      },
-      {
-        id: 'backend-dev',
-        category: 'IT и разработка',
-        image: 'course-backend.webp',
-        emoji: '⚙️',
-        fallbackBg: 'linear-gradient(135deg,#374151,#1f2937)',
-        tag: 'nw', tagLabel: 'Новый',
-        title: 'Backend разработка (Node.js / Python) — создай свой API и получи первую работу',
-        instructor: 'Данияр Сейткали',
-        rating: '4.8', reviews: '(64 отзыва)', students: '· 148 студентов',
-        pnow: '9 000 ₸', pwas: '18 000 ₸',
-        hours: '19', lectures: '84', level: 'Средний',
-        desc: 'Backend-разработчики в Казахстане нарасхват. Курс охватывает Node.js и Python, работу с базами данных, создание REST API и деплой на сервер. Уклон на практику — каждый раздел заканчивается рабочим кейсом.',
-        outcomes: [
-          'Создаёте REST API на Node.js и Python',
-          'Работаете с PostgreSQL и MongoDB',
-          'Деплоите приложения на сервер',
-          'Готовы к позиции Junior Backend Developer',
-        ],
-      },
-      {
-        id: 'qa-testing',
-        category: 'IT и разработка',
-        image: 'course-qa.webp',
-        emoji: '🔍',
-        fallbackBg: 'linear-gradient(135deg,#6366f1,#4f46e5)',
-        tag: 'ht', tagLabel: 'Быстрый вход',
-        title: 'QA тестирование с нуля — войди в IT без программирования',
-        instructor: 'Жанна Абенова',
-        rating: '4.8', reviews: '(112 отзывов)', students: '· 245 студентов',
-        pnow: '6 500 ₸', pwas: '13 000 ₸',
-        hours: '12', lectures: '52', level: 'С нуля',
-        desc: 'Самый доступный путь в IT. QA-тестирование не требует знания программирования, но даёт стабильную работу в tech-компаниях. Вы освоите ручное тестирование, Jira, Postman и основы автоматизации.',
-        outcomes: [
-          'Составляете тест-кейсы и баг-репорты профессионально',
-          'Работаете с Jira, Trello и Confluence',
-          'Тестируете API через Postman',
-          'Готовы к первой позиции Junior QA Engineer',
-        ],
-      },
-      {
-        id: '1c-programming',
-        category: 'IT и разработка',
-        image: 'course-1c.webp',
-        emoji: '🗂️',
-        fallbackBg: 'linear-gradient(135deg,#f59e0b,#b45309)',
+        id: '1c-programming', category: 'IT и разработка',
+        image: 'course-1c.webp', emoji: '🗂️', fallbackBg: 'linear-gradient(135deg,#f59e0b,#b45309)',
         tag: 'bs', tagLabel: 'Важно для KZ',
         title: '1С программирование и администрирование — от новичка до специалиста',
-        instructor: 'Серик Касымов',
-        rating: '4.9', reviews: '(88 отзывов)', students: '· 200 студентов',
-        pnow: '8 000 ₸', pwas: '16 000 ₸',
-        hours: '15', lectures: '65', level: 'С нуля',
-        desc: '1С — самая востребованная платформа для автоматизации бизнеса в Казахстане. Курс охватывает настройку, администрирование и программирование в 1С:Бухгалтерия и 1С:Управление торговлей. Реальные задачи с казахстанскими компаниями.',
-        outcomes: [
-          'Настраиваете и администрируете 1С без специалиста',
-          'Пишете базовые модули и отчёты на языке 1С',
-          'Автоматизируете учёт для малого и среднего бизнеса',
-          'Работаете с 1С:Бухгалтерия и 1С:Управление торговлей',
-        ],
+        instructor: 'Серик Касымов', rating: '4.9', reviews: '(88 отзывов)', students: '· 200 студентов',
+        pnow: '8 000 ₸', pwas: '16 000 ₸', hours: '15', lectures: '65', level: 'С нуля',
+        desc: '1С — самая востребованная платформа для автоматизации бизнеса в Казахстане. Курс охватывает настройку, администрирование и программирование в 1С:Бухгалтерия и 1С:Управление торговлей.',
+        outcomes: ['Настраиваете и администрируете 1С без специалиста','Пишете базовые модули и отчёты на языке 1С','Автоматизируете учёт для малого и среднего бизнеса','Работаете с 1С:Бухгалтерия и 1С:Управление торговлей'],
       },
       {
-        id: 'sql-databases',
-        category: 'IT и разработка',
-        image: 'course-sql.webp',
-        emoji: '🗄️',
-        fallbackBg: 'linear-gradient(135deg,#0ea5e9,#0369a1)',
+        id: 'sql-databases', category: 'IT и разработка',
+        image: 'course-sql.webp', emoji: '🗄️', fallbackBg: 'linear-gradient(135deg,#0ea5e9,#0369a1)',
         tag: 'nw', tagLabel: 'Новый',
         title: 'SQL и базы данных с нуля — работай с данными и зарабатывай больше',
-        instructor: 'Нурлан Ахметов',
-        rating: '4.8', reviews: '(73 отзыва)', students: '· 170 студентов',
-        pnow: '6 000 ₸', pwas: '12 000 ₸',
-        hours: '11', lectures: '47', level: 'С нуля',
-        desc: 'SQL — язык, без которого не обходится ни один аналитик, разработчик и менеджер продукта. Вы научитесь писать запросы, работать с реальными базами данных и строить аналитические отчёты, которые ценятся на рынке.',
-        outcomes: [
-          'Пишете SQL-запросы любой сложности',
-          'Работаете с PostgreSQL и MySQL',
-          'Строите аналитические отчёты и дашборды',
-          'Готовы к позиции Junior Data Analyst',
-        ],
+        instructor: 'Нурлан Ахметов', rating: '4.8', reviews: '(73 отзыва)', students: '· 170 студентов',
+        pnow: '6 000 ₸', pwas: '12 000 ₸', hours: '11', lectures: '47', level: 'С нуля',
+        desc: 'SQL — язык, без которого не обходится ни один аналитик, разработчик и менеджер продукта. Вы научитесь писать запросы, работать с реальными базами данных и строить аналитические отчёты.',
+        outcomes: ['Пишете SQL-запросы любой сложности','Работаете с PostgreSQL и MySQL','Строите аналитические отчёты и дашборды','Готовы к позиции Junior Data Analyst'],
       },
-
-      // ── БЛОК 3: ЯЗЫКИ ────────────────────────────────────
       {
-        id: 'kazakh-language',
-        category: 'Языки',
-        image: 'course-kazakh.webp',
-        emoji: '🇰🇿',
-        fallbackBg: 'linear-gradient(135deg,#16a34a,#15803d)',
+        id: 'kazakh-language', category: 'Языки',
+        image: 'course-kazakh.webp', emoji: '🇰🇿', fallbackBg: 'linear-gradient(135deg,#16a34a,#15803d)',
         tag: 'ht', tagLabel: 'Актуально',
         title: 'Казахский язык с нуля — пиши, говори и понимай свободно',
-        instructor: 'Гүлнәр Сейітова',
-        rating: '4.9', reviews: '(143 отзыва)', students: '· 340 студентов',
-        pnow: '5 500 ₸', pwas: '11 000 ₸',
-        hours: '12', lectures: '54', level: 'С нуля',
-        desc: 'Казахский язык открывает двери: карьера в госструктурах, бизнесе и общение с 70% населения страны. Курс построен на разговорной практике и письме — вы быстро выйдете на уровень уверенного общения в реальных ситуациях.',
-        outcomes: [
-          'Читаете и пишете на казахском без ошибок',
-          'Ведёте деловую переписку и разговоры',
-          'Понимаете казахскую речь на слух',
-          'Уверенно общаетесь в госорганах и на работе',
-        ],
+        instructor: 'Гүлнәр Сейітова', rating: '4.9', reviews: '(143 отзыва)', students: '· 340 студентов',
+        pnow: '5 500 ₸', pwas: '11 000 ₸', hours: '12', lectures: '54', level: 'С нуля',
+        desc: 'Казахский язык открывает двери: карьера в госструктурах, бизнесе и общение с 70% населения страны. Курс построен на разговорной практике и письме — вы быстро выйдете на уровень уверенного общения.',
+        outcomes: ['Читаете и пишете на казахском без ошибок','Ведёте деловую переписку и разговоры','Понимаете казахскую речь на слух','Уверенно общаетесь в госорганах и на работе'],
       },
       {
-        id: 'english-business',
-        category: 'Языки',
-        image: 'course-english.png',
-        emoji: '🇬🇧',
-        fallbackBg: 'linear-gradient(135deg,#2563eb,#1d4ed8)',
+        id: 'english-business', category: 'Языки',
+        image: 'course-english.png', emoji: '🇬🇧', fallbackBg: 'linear-gradient(135deg,#2563eb,#1d4ed8)',
         tag: 'bs', tagLabel: 'Бестселлер',
         title: 'Английский для делового общения — говори с иностранными коллегами уверенно',
-        instructor: 'Айнур Сейтова',
-        rating: '4.8', reviews: '(118 отзывов)', students: '· 275 студентов',
-        pnow: '6 500 ₸', pwas: '13 000 ₸',
-        hours: '14', lectures: '60', level: 'A2–B2',
-        desc: 'Практический курс делового английского для тех, кто уже знает базу но теряется на встречах, в переписке и на переговорах с иностранными партнёрами. Никакой грамматики ради грамматики — только реальные ситуации бизнеса.',
-        outcomes: [
-          'Уверенно ведёте переговоры и встречи на английском',
-          'Пишете деловые письма, отчёты и презентации',
-          'Понимаете иностранных коллег с первой фразы',
-          'Проходите интервью на английском без страха',
-        ],
+        instructor: 'Айнур Сейтова', rating: '4.8', reviews: '(118 отзывов)', students: '· 275 студентов',
+        pnow: '6 500 ₸', pwas: '13 000 ₸', hours: '14', lectures: '60', level: 'A2–B2',
+        desc: 'Практический курс делового английского для тех, кто уже знает базу, но теряется на встречах, в переписке и на переговорах с иностранными партнёрами. Только реальные ситуации бизнеса.',
+        outcomes: ['Уверенно ведёте переговоры и встречи на английском','Пишете деловые письма, отчёты и презентации','Понимаете иностранных коллег с первой фразы','Проходите интервью на английском без страха'],
       },
       {
-        id: 'tajwid',
-        category: 'Языки',
-        image: 'course-tajwid.png',
-        emoji: '📖',
-        fallbackBg: 'linear-gradient(135deg,#065f46,#047857)',
+        id: 'tajwid', category: 'Языки',
+        image: 'course-tajwid.png', emoji: '📖', fallbackBg: 'linear-gradient(135deg,#065f46,#047857)',
         tag: 'nw', tagLabel: 'Новый',
         title: 'Таджвид с нуля — читай Коран правильно и красиво',
-        instructor: 'Ерлан Қасымов',
-        rating: '4.9', reviews: '(92 отзыва)', students: '· 220 студентов',
-        pnow: '5 000 ₸', pwas: '10 000 ₸',
-        hours: '10', lectures: '45', level: 'С нуля',
-        desc: 'Курс по правилам таджвида для начинающих и тех, кто хочет исправить ошибки в чтении. Вы освоите правила произношения арабских букв, правила слияния и остановок, и научитесь читать аяты так, как это предписано традицией.',
-        outcomes: [
-          'Правильно произносите все арабские буквы и звуки',
-          'Знаете основные правила таджвида и применяете их',
-          'Читаете Коран без ошибок в произношении',
-          'Можете самостоятельно исправлять ошибки в чтении',
-        ],
-      },
-
-      // ── БЛОК 4: SOFT SKILLS И ЭКЗАМЕНЫ ──────────────────
-      {
-        id: 'public-speaking',
-        category: 'Soft skills',
-        image: 'course-speaking.webp',
-        emoji: '🎤',
-        fallbackBg: 'linear-gradient(135deg,#8b5cf6,#7c3aed)',
-        tag: 'nw', tagLabel: 'Новый',
-        title: 'Ораторское мастерство — говори уверенно и влияй на людей',
-        instructor: 'Асем Нурланова',
-        rating: '4.8', reviews: '(59 отзывов)', students: '· 140 студентов',
-        pnow: '5 500 ₸', pwas: '11 000 ₸',
-        hours: '8', lectures: '34', level: 'Для всех',
-        desc: 'Умение говорить убедительно — навык, который умножает доход. Курс охватывает технику речи, управление голосом, работу со страхом сцены и структуру выступлений. Подходит для деловых переговоров, презентаций и публичных выступлений.',
-        outcomes: [
-          'Говорите уверенно перед любой аудиторией',
-          'Управляете голосом, темпом и паузами',
-          'Структурируете убедительные презентации',
-          'Проводите деловые переговоры и продаёте идеи',
-        ],
+        instructor: 'Ерлан Қасымов', rating: '4.9', reviews: '(92 отзыва)', students: '· 220 студентов',
+        pnow: '5 000 ₸', pwas: '10 000 ₸', hours: '10', lectures: '45', level: 'С нуля',
+        desc: 'Курс по правилам таджвида для начинающих и тех, кто хочет исправить ошибки в чтении. Вы освоите правила произношения арабских букв и научитесь читать аяты так, как это предписано традицией.',
+        outcomes: ['Правильно произносите все арабские буквы и звуки','Знаете основные правила таджвида и применяете их','Читаете Коран без ошибок в произношении','Можете самостоятельно исправлять ошибки в чтении'],
       },
       {
-        id: 'sat-prep',
-        category: 'Экзамены',
-        image: 'course-sat.webp',
-        emoji: '📐',
-        fallbackBg: 'linear-gradient(135deg,#2563eb,#1d4ed8)',
+        id: 'sat-prep', category: 'Экзамены',
+        image: 'course-sat.webp', emoji: '📐', fallbackBg: 'linear-gradient(135deg,#2563eb,#1d4ed8)',
         tag: 'ht', tagLabel: 'Для поступления',
         title: 'Подготовка к SAT: математика + английский — поступи в топ-университет',
-        instructor: 'Айнур Сейтова',
-        rating: '4.9', reviews: '(81 отзыв)', students: '· 190 студентов',
-        pnow: '9 500 ₸', pwas: '19 000 ₸',
-        hours: '20', lectures: '90', level: 'Старшеклассники',
-        desc: 'Полная подготовка к SAT от преподавателей с опытом работы в международных школах Казахстана. Курс охватывает все разделы экзамена: математику, чтение и грамматику. Практические тесты в формате реального SAT после каждого модуля.',
-        outcomes: [
-          'Знаете всю математику SAT без пробелов',
-          'Решаете задания по чтению и грамматике на высший балл',
-          'Проходите полные пробные экзамены с разбором ошибок',
-          'Готовы подать заявку в ведущие университеты мира',
-        ],
+        instructor: 'Айнур Сейтова', rating: '4.9', reviews: '(81 отзыв)', students: '· 190 студентов',
+        pnow: '9 500 ₸', pwas: '19 000 ₸', hours: '20', lectures: '90', level: 'Старшеклассники',
+        desc: 'Полная подготовка к SAT от преподавателей с опытом работы в международных школах Казахстана. Курс охватывает все разделы экзамена. Практические тесты в формате реального SAT после каждого модуля.',
+        outcomes: ['Знаете всю математику SAT без пробелов','Решаете задания по чтению и грамматике на высший балл','Проходите полные пробные экзамены с разбором ошибок','Готовы подать заявку в ведущие университеты мира'],
       },
       {
-        id: 'ielts-full',
-        category: 'Экзамены',
-        image: 'course-ielts.jpg',
-        emoji: '🌍',
-        fallbackBg: 'linear-gradient(135deg,#0891b2,#0e7490)',
+        id: 'ielts-full', category: 'Экзамены',
+        image: 'course-ielts.jpg', emoji: '🌍', fallbackBg: 'linear-gradient(135deg,#0891b2,#0e7490)',
         tag: 'bs', tagLabel: 'Бестселлер',
         title: 'IELTS полный курс — 7.0+ для учёбы и иммиграции',
-        instructor: 'Айнур Сейтова',
-        rating: '4.9', reviews: '(168 отзывов)', students: '· 410 студентов',
-        pnow: '9 500 ₸', pwas: '19 000 ₸',
-        hours: '22', lectures: '96', level: 'B1–C1',
-        desc: 'Один из самых конверсионных курсов на рынке. Полная подготовка ко всем четырём модулям IELTS: Listening, Reading, Writing, Speaking. Реальные стратегии, разбор ошибок и практика с носителями помогут вам уверенно взять 7.0 и выше.',
-        outcomes: [
-          'Знаете стратегии для каждого модуля IELTS',
-          'Пишете эссе Writing Task 1 и Task 2 на Band 7+',
-          'Проходите Speaking без страха и с уверенностью',
-          'Получаете балл для поступления за рубеж или иммиграции',
-        ],
+        instructor: 'Айнур Сейтова', rating: '4.9', reviews: '(168 отзывов)', students: '· 410 студентов',
+        pnow: '9 500 ₸', pwas: '19 000 ₸', hours: '22', lectures: '96', level: 'B1–C1',
+        desc: 'Полная подготовка ко всем четырём модулям IELTS: Listening, Reading, Writing, Speaking. Реальные стратегии, разбор ошибок и практика помогут вам уверенно взять 7.0 и выше.',
+        outcomes: ['Знаете стратегии для каждого модуля IELTS','Пишете эссе Writing Task 1 и Task 2 на Band 7+','Проходите Speaking без страха и с уверенностью','Получаете балл для поступления за рубеж или иммиграции'],
       },
     ];
 
-    // ── SESSION / VISITOR IDS ─────────────────────────────
+    // ── SESSION IDS ───────────────────────────────────────
     function uuid() {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
         const r = Math.random() * 16 | 0;
@@ -1305,12 +957,10 @@
     function elapsed() { return Date.now() - t0; }
     function utm(k) { return new URLSearchParams(window.location.search).get(k) || null; }
 
-    // ── SEND ─────────────────────────────────────────────
     function send(path, data) {
       try {
         fetch(BACKEND + path, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ session_id: sessionId, visitor_id: visitorId, ...data }),
           keepalive: true,
         }).catch(() => {});
@@ -1338,14 +988,13 @@
       navigator.sendBeacon && navigator.sendBeacon(BACKEND + '/event', new Blob([p], { type: 'application/json' }));
     });
 
-    // ── RENDER CARDS ─────────────────────────────────────
+    // ── RENDER CARDS ──────────────────────────────────────
     const tagCls = { bs: 'tag-bs', nw: 'tag-nw', ht: 'tag-ht', lt: 'tag-lt' };
 
     function renderCards(filter) {
       const grid = document.getElementById('courses-grid');
       grid.innerHTML = '';
       const list = filter === 'all' ? COURSES : COURSES.filter(c => c.category === filter);
-
       list.forEach((c, i) => {
         const el = document.createElement('article');
         el.className = 'course-card';
@@ -1354,11 +1003,9 @@
         el.setAttribute('role', 'button');
         el.setAttribute('tabindex', '0');
         el.setAttribute('aria-label', `Открыть курс: ${c.title}`);
-
         el.innerHTML = `
           <div class="card-thumb">
-            <img src="${c.image}" alt="${c.title}"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <img src="${c.image}" alt="${c.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
             <div class="card-thumb-fallback" style="display:none;background:${c.fallbackBg}">${c.emoji}</div>
             <div class="card-overlay">
               <div class="preview-btn">
@@ -1381,18 +1028,9 @@
               <span class="card-rcnt">${c.reviews}</span>
             </div>
             <div class="card-mrow">
-              <span class="card-mi">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M5 2.5v2.5l1.5 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                ${c.hours} ч. видео
-              </span>
-              <span class="card-mi">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M3 5h4M3 3h4M3 7h2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
-                ${c.lectures} уроков
-              </span>
-              <span class="card-mi">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M5 1l1 3h3l-2.5 1.8 1 3L5 7.2 2.5 8.8l1-3L1 4h3z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
-                ${c.level}
-              </span>
+              <span class="card-mi"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M5 2.5v2.5l1.5 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>${c.hours} ч. видео</span>
+              <span class="card-mi"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M3 5h4M3 3h4M3 7h2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>${c.lectures} уроков</span>
+              <span class="card-mi"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M5 1l1 3h3l-2.5 1.8 1 3L5 7.2 2.5 8.8l1-3L1 4h3z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>${c.level}</span>
             </div>
             <div class="card-footer">
               <div class="card-prices">
@@ -1402,24 +1040,18 @@
               <span class="card-disc">−50%</span>
             </div>
           </div>`;
-
-        el.addEventListener('click', () => openModal(c));
-        el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openModal(c); });
+        el.addEventListener('click', () => openCourseModal(c));
+        el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openCourseModal(c); });
         grid.appendChild(el);
       });
-
       const io = new IntersectionObserver(entries => {
         entries.forEach(e => {
-          if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add('visible'), parseInt(e.target.dataset.delay || 0));
-            io.unobserve(e.target);
-          }
+          if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), parseInt(e.target.dataset.delay || 0)); io.unobserve(e.target); }
         });
       }, { threshold: 0.08 });
       grid.querySelectorAll('.course-card').forEach(el => io.observe(el));
     }
 
-    // ── CATEGORY FILTER ───────────────────────────────────
     document.getElementById('cat-pills').addEventListener('click', e => {
       const p = e.target.closest('.cat-pill'); if (!p) return;
       document.querySelectorAll('.cat-pill').forEach(x => { x.classList.remove('active'); x.setAttribute('aria-selected', 'false'); });
@@ -1427,141 +1059,180 @@
       renderCards(p.dataset.cat);
     });
 
-    // ── STEP CARDS ────────────────────────────────────────
     const sio = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), parseInt(e.target.dataset.delay || 0));
-          sio.unobserve(e.target);
-        }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), parseInt(e.target.dataset.delay || 0)); sio.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.step-card').forEach(el => sio.observe(el));
 
-    // ── MODAL ─────────────────────────────────────────────
-    const overlay  = document.getElementById('modal-overlay');
-    const modal    = document.getElementById('course-modal');
-    const closebtn = document.getElementById('modal-close');
+    // ── SHARED OVERLAY ────────────────────────────────────
+    const overlay = document.getElementById('modal-overlay');
+
+    function openOverlay() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeOverlay() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+    overlay.addEventListener('click', () => { closeCourseModal(); closeTutorModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCourseModal(); closeTutorModal(); } });
+
+    // ── COURSE MODAL ──────────────────────────────────────
+    const courseModal = document.getElementById('course-modal');
+    const courseClose = document.getElementById('modal-close');
     let active = null, fStarted = false;
 
-    function openModal(c) {
+    function openCourseModal(c) {
       active = c; fStarted = false;
-
       const thumb = document.getElementById('modal-thumb');
       thumb.querySelectorAll('img, .modal-thumb-fallback').forEach(n => n.remove());
-      const img = document.createElement('img');
-      img.src = c.image; img.alt = c.title;
-      const fb = document.createElement('div');
-      fb.className = 'modal-thumb-fallback';
-      fb.style.background = c.fallbackBg;
-      fb.textContent = c.emoji;
-      fb.style.display = 'none';
+      const img = document.createElement('img'); img.src = c.image; img.alt = c.title;
+      const fb = document.createElement('div'); fb.className = 'modal-thumb-fallback'; fb.style.background = c.fallbackBg; fb.textContent = c.emoji; fb.style.display = 'none';
       img.onerror = () => { img.style.display = 'none'; fb.style.display = 'flex'; };
       thumb.insertBefore(fb, thumb.querySelector('.modal-thumb-overlay'));
       thumb.insertBefore(img, fb);
-
-      document.getElementById('modal-cat').textContent    = c.category;
-      document.getElementById('modal-title').textContent  = c.title;
-      document.getElementById('m-rating').textContent     = c.rating;
-      document.getElementById('m-reviews').textContent    = c.reviews;
-      document.getElementById('m-students').textContent   = c.students;
-      document.getElementById('m-pnow').textContent       = c.pnow;
-      document.getElementById('m-pwas').textContent       = c.pwas;
-      document.getElementById('m-desc').textContent       = c.desc;
-
+      document.getElementById('modal-cat').textContent   = c.category;
+      document.getElementById('modal-course-title').textContent = c.title;
+      document.getElementById('m-rating').textContent    = c.rating;
+      document.getElementById('m-reviews').textContent   = c.reviews;
+      document.getElementById('m-students').textContent  = c.students;
+      document.getElementById('m-pnow').textContent      = c.pnow;
+      document.getElementById('m-pwas').textContent      = c.pwas;
+      document.getElementById('m-desc').textContent      = c.desc;
       document.getElementById('m-meta').innerHTML = `
         <div class="meta-chip"><div class="mclabel">Видео</div><div class="mcvalue">${c.hours} часов</div></div>
         <div class="meta-chip"><div class="mclabel">Уроков</div><div class="mcvalue">${c.lectures} видео</div></div>
         <div class="meta-chip"><div class="mclabel">Уровень</div><div class="mcvalue">${c.level}</div></div>
         <div class="meta-chip"><div class="mclabel">Доступ</div><div class="mcvalue">Навсегда ♾️</div></div>`;
-
       document.getElementById('m-outcomes').innerHTML = c.outcomes.map(o => `
         <div class="outcome-row">
-          <div class="ocheck" aria-hidden="true">
-            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+          <div class="ocheck" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <span>${o}</span>
         </div>`).join('');
-
-      resetForm();
-      overlay.classList.add('open');
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      resetCourseForm();
+      openOverlay(); courseModal.classList.add('open');
       track('course_card_click', c.id, { title: c.title });
       setTimeout(() => track('modal_open', c.id, {}), 50);
     }
 
-    function closeModal() {
+    function closeCourseModal() {
       if (!active) return;
       track('modal_close', active.id, { form_started: fStarted });
-      overlay.classList.remove('open');
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-      active = null;
+      courseModal.classList.remove('open'); closeOverlay(); active = null;
     }
 
-    closebtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', closeModal);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    courseClose.addEventListener('click', closeCourseModal);
 
-    // ── FORM TRACKING ─────────────────────────────────────
     ['f-name', 'f-phone'].forEach(id => {
       document.getElementById(id).addEventListener('focus', () => {
         if (!fStarted && active) { fStarted = true; track('form_start', active.id, {}); }
       }, { once: true });
     });
 
-    function resetForm() {
+    function resetCourseForm() {
       ['f-name', 'f-phone', 'f-hp'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('f-err').classList.remove('show');
       document.getElementById('f-phone').classList.remove('err');
       document.getElementById('form-box').style.display = '';
       document.getElementById('success-box').classList.remove('show');
-      const btn = document.getElementById('btn-reg');
-      btn.classList.remove('loading'); btn.disabled = false;
+      const btn = document.getElementById('btn-reg'); btn.classList.remove('loading'); btn.disabled = false;
     }
 
     document.getElementById('btn-reg').addEventListener('click', async () => {
       if (!active) return;
-      const name  = document.getElementById('f-name').value.trim();
+      const name = document.getElementById('f-name').value.trim();
       const phone = document.getElementById('f-phone').value.trim();
-      const hp    = document.getElementById('f-hp').value.trim();
-
-      if (hp) { send('/session', { is_bot: true }); showSuccess(); return; }
-
-      if (!phone) {
-        document.getElementById('f-err').classList.add('show');
-        document.getElementById('f-phone').classList.add('err');
-        return;
-      }
-
-      document.getElementById('f-err').classList.remove('show');
-      document.getElementById('f-phone').classList.remove('err');
-
-      const btn = document.getElementById('btn-reg');
-      btn.classList.add('loading'); btn.disabled = true;
-
+      const hp = document.getElementById('f-hp').value.trim();
+      if (hp) { send('/session', { is_bot: true }); showCourseSuccess(); return; }
+      if (!phone) { document.getElementById('f-err').classList.add('show'); document.getElementById('f-phone').classList.add('err'); return; }
+      document.getElementById('f-err').classList.remove('show'); document.getElementById('f-phone').classList.remove('err');
+      const btn = document.getElementById('btn-reg'); btn.classList.add('loading'); btn.disabled = true;
       try {
-        const r = await fetch(BACKEND + '/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            session_id: sessionId, visitor_id: visitorId,
-            name: name || null, phone: phone, email: null,
-            course_id: active.id, time_on_page_ms: elapsed(),
-          }),
-        });
+        const r = await fetch(BACKEND + '/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: sessionId, visitor_id: visitorId, name: name || null, phone, email: null, course_id: active.id, time_on_page_ms: elapsed() }) });
         if (!r.ok) throw new Error();
-        showSuccess();
-      } catch (_) { showSuccess(); }
+        showCourseSuccess();
+      } catch (_) { showCourseSuccess(); }
     });
 
-    function showSuccess() {
+    function showCourseSuccess() {
       document.getElementById('form-box').style.display = 'none';
       document.getElementById('success-box').classList.add('show');
     }
 
-    // ── INIT ─────────────────────────────────────────────
+    // ── TUTOR MODAL ───────────────────────────────────────
+    const tutorModal = document.getElementById('tutor-modal');
+    const tutorClose = document.getElementById('tutor-close');
+
+    function openTutorModal() {
+      resetTutorForm();
+      openOverlay(); tutorModal.classList.add('open');
+    }
+    function closeTutorModal() {
+      tutorModal.classList.remove('open'); closeOverlay();
+    }
+
+    document.getElementById('btn-open-tutor').addEventListener('click', openTutorModal);
+    document.getElementById('footer-tutor-link').addEventListener('click', e => { e.preventDefault(); openTutorModal(); });
+    tutorClose.addEventListener('click', closeTutorModal);
+
+    function resetTutorForm() {
+      ['t-name','t-phone','t-email','t-idea','t-about','t-hp'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+      document.getElementById('t-profession').value = '';
+      document.getElementById('t-exp').value = '';
+      ['t-name-err','t-phone-err','t-prof-err','t-exp-err','t-idea-err','t-about-err'].forEach(id => document.getElementById(id).classList.remove('show'));
+      ['t-name','t-phone','t-profession','t-exp','t-idea','t-about'].forEach(id => document.getElementById(id).classList.remove('err'));
+      document.getElementById('tutor-form-wrapper').style.display = '';
+      document.getElementById('tutor-success').classList.remove('show');
+      const btn = document.getElementById('btn-tutor-submit'); btn.classList.remove('loading'); btn.disabled = false;
+    }
+
+    document.getElementById('btn-tutor-submit').addEventListener('click', async () => {
+      const name           = document.getElementById('t-name').value.trim();
+      const phone          = document.getElementById('t-phone').value.trim();
+      const email          = document.getElementById('t-email').value.trim();
+      const profession     = document.getElementById('t-profession').value;
+      const experience     = document.getElementById('t-exp').value;
+      const courseIdea     = document.getElementById('t-idea').value.trim();
+      const about          = document.getElementById('t-about').value.trim();
+      const hp             = document.getElementById('t-hp').value.trim();
+
+      if (hp) { showTutorSuccess(); return; }
+
+      // Validate
+      let valid = true;
+      const check = (val, errId, inputId) => {
+        if (!val) {
+          document.getElementById(errId).classList.add('show');
+          document.getElementById(inputId).classList.add('err');
+          valid = false;
+        } else {
+          document.getElementById(errId).classList.remove('show');
+          document.getElementById(inputId).classList.remove('err');
+        }
+      };
+      check(name,       't-name-err',  't-name');
+      check(phone,      't-phone-err', 't-phone');
+      check(profession, 't-prof-err',  't-profession');
+      check(experience, 't-exp-err',   't-exp');
+      check(courseIdea, 't-idea-err',  't-idea');
+      check(about,      't-about-err', 't-about');
+      if (!valid) return;
+
+      const btn = document.getElementById('btn-tutor-submit');
+      btn.classList.add('loading'); btn.disabled = true;
+
+      try {
+        const r = await fetch(BACKEND + '/tutor', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, email: email || null, profession, experience_years: experience, course_idea: courseIdea, about }),
+        });
+        if (!r.ok) throw new Error();
+        showTutorSuccess();
+      } catch (_) { showTutorSuccess(); }
+    });
+
+    function showTutorSuccess() {
+      document.getElementById('tutor-form-wrapper').style.display = 'none';
+      document.getElementById('tutor-success').classList.add('show');
+    }
+
+    // ── INIT ──────────────────────────────────────────────
     renderCards('all');
     initSession();
 
