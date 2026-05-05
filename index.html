@@ -289,7 +289,7 @@
     .step-title { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 7px; }
     .step-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
 
-    /* ── SHARED MODAL STYLES ────────────────────────────── */
+    /* ── SHARED MODAL ───────────────────────────────────── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(17,24,39,0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease); }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
     .modal {
@@ -301,37 +301,78 @@
     }
     .modal.open { transform: translateX(0); }
 
-    /* ── COURSE MODAL ───────────────────────────────────── */
-    .modal-thumb { height: 200px; position: relative; overflow: hidden; flex-shrink: 0; background: var(--gray-100); }
+    /* ── COURSE MODAL ───────────────────────────────────────
+       Layout:
+         .modal-thumb   → image (flex-shrink: 0)
+         .modal-header  → title / rating / price (flex-shrink: 0)
+         .modal-scroll  → scrollable details (flex: 1, overflow-y: auto)
+         .modal-sticky  → form ALWAYS visible at bottom (flex-shrink: 0)
+    ──────────────────────────────────────────────────────── */
+    .modal-thumb { height: 190px; position: relative; overflow: hidden; flex-shrink: 0; background: var(--gray-100); }
     .modal-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .modal-thumb-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 60px; }
     .modal-thumb-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.45) 100%); }
     .modal-close { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; background: rgba(0,0,0,0.45); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); z-index: 10; transition: background 0.2s; }
     .modal-close:hover { background: rgba(0,0,0,0.75); }
-    .modal-header { padding: 18px 22px 14px; border-bottom: 1px solid var(--gray-100); flex-shrink: 0; }
-    .modal-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
-    .modal-title { font-size: 1.15rem; font-weight: 800; color: var(--gray-900); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 9px; }
-    .modal-rrow { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; }
+
+    .modal-header { padding: 16px 22px 12px; border-bottom: 1px solid var(--gray-100); flex-shrink: 0; }
+    .modal-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+    .modal-title { font-size: 1.1rem; font-weight: 800; color: var(--gray-900); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .modal-rrow { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
     .modal-price-row { display: flex; align-items: center; gap: 9px; }
-    .mpnow { font-size: 1.45rem; font-weight: 800; color: var(--gray-900); }
+    .mpnow { font-size: 1.35rem; font-weight: 800; color: var(--gray-900); }
     .mpwas { font-size: 13px; color: var(--gray-400); text-decoration: line-through; }
     .mpbadge { background: #fee2e2; color: #b91c1c; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-    .modal-body { flex: 1; overflow-y: auto; padding: 18px 22px; }
-    .modal-body::-webkit-scrollbar { width: 4px; }
-    .modal-body::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
-    .lifetime-strip { background: var(--blue-light); border: 1px solid #c7dcff; border-radius: var(--radius-sm); padding: 12px 14px; display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
-    .ls-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--blue-dark); }
-    .ls-item svg { color: var(--blue); flex-shrink: 0; }
-    .mlabel { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 9px; margin-top: 18px; }
-    .mlabel:first-child { margin-top: 0; }
-    .modal-desc { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
-    .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .meta-chip { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 9px 12px; }
-    .mclabel { font-size: 10px; color: var(--gray-400); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
-    .mcvalue { font-size: 13px; font-weight: 700; color: var(--gray-900); }
-    .outcomes { display: flex; flex-direction: column; gap: 7px; }
-    .outcome-row { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--gray-700); line-height: 1.5; }
-    .ocheck { width: 17px; height: 17px; border-radius: 50%; background: var(--blue-light); color: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+    /* Scrollable details zone — grows to fill remaining space */
+    .modal-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 22px 8px;
+    }
+    .modal-scroll::-webkit-scrollbar { width: 4px; }
+    .modal-scroll::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
+
+    /* ── STICKY FORM — always pinned to bottom ─────────── */
+    .modal-sticky {
+      flex-shrink: 0;
+      border-top: 1.5px solid var(--gray-200);
+      background: var(--white);
+      padding: 14px 22px 18px;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.07);
+    }
+    .modal-sticky.hidden { display: none; }
+
+    /* Course pill + price label row */
+    .sticky-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .sticky-course-pill {
+      font-size: 12px; font-weight: 700; color: var(--gray-600);
+      background: var(--gray-100); border-radius: 20px; padding: 3px 10px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 65%;
+    }
+    .sticky-price {
+      font-size: 15px; font-weight: 800; color: var(--blue); flex-shrink: 0;
+    }
+
+    /* Two inputs side by side on desktop, stacked on mobile */
+    .sticky-fields { display: flex; gap: 8px; margin-bottom: 8px; }
+    .sticky-fields input { flex: 1; min-width: 0; }
+
+    .sticky-err {
+      font-size: 11px; color: #ef4444; font-weight: 500;
+      margin-bottom: 6px; display: none;
+    }
+    .sticky-err.show { display: block; }
+
+    /* Success replaces the sticky zone */
+    .sticky-success { display: none; text-align: center; padding: 10px 0 4px; }
+    .sticky-success.show { display: block; }
+    .sticky-success .s-emoji { font-size: 36px; margin-bottom: 8px; }
+    .sticky-success .s-title { font-size: 1rem; font-weight: 800; color: var(--gray-900); margin-bottom: 5px; }
+    .sticky-success .s-desc { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
 
     /* ── TUTOR MODAL ────────────────────────────────────── */
     .tutor-modal-head {
@@ -350,7 +391,26 @@
     .tutor-modal-title { font-size: 1.3rem; font-weight: 800; color: var(--white); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 6px; }
     .tutor-modal-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
 
+    /* Tutor modal body scrolls normally */
+    .modal-body { flex: 1; overflow-y: auto; padding: 18px 22px; }
+    .modal-body::-webkit-scrollbar { width: 4px; }
+    .modal-body::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
+
     /* ── SHARED FORM STYLES ─────────────────────────────── */
+    .lifetime-strip { background: var(--blue-light); border: 1px solid #c7dcff; border-radius: var(--radius-sm); padding: 10px 12px; display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+    .ls-item { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--blue-dark); }
+    .ls-item svg { color: var(--blue); flex-shrink: 0; }
+    .mlabel { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 9px; margin-top: 16px; }
+    .mlabel:first-child { margin-top: 0; }
+    .modal-desc { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+    .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .meta-chip { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 9px 12px; }
+    .mclabel { font-size: 10px; color: var(--gray-400); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
+    .mcvalue { font-size: 13px; font-weight: 700; color: var(--gray-900); }
+    .outcomes { display: flex; flex-direction: column; gap: 7px; }
+    .outcome-row { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--gray-700); line-height: 1.5; }
+    .ocheck { width: 17px; height: 17px; border-radius: 50%; background: var(--blue-light); color: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
     .form-box { background: var(--gray-50); border: 1.5px solid var(--gray-200); border-radius: var(--radius); padding: 18px; margin-top: 6px; }
     .form-box-title { font-size: 14px; font-weight: 800; color: var(--gray-900); margin-bottom: 3px; }
     .form-box-sub { font-size: 12px; color: var(--gray-500); margin-bottom: 14px; }
@@ -369,10 +429,11 @@
     .form-err { font-size: 11px; color: #ef4444; font-weight: 500; margin-top: 3px; display: none; }
     .form-err.show { display: block; }
     .hp-field { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
     .btn-register {
       width: 100%; background: var(--blue); color: var(--white); font-family: var(--font);
-      font-size: 14px; font-weight: 700; padding: 14px; border-radius: var(--radius-sm);
-      margin-top: 4px; display: flex; align-items: center; justify-content: center; gap: 7px;
+      font-size: 14px; font-weight: 700; padding: 13px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; gap: 7px;
       box-shadow: 0 4px 12px rgba(58,134,255,0.3);
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     }
@@ -382,7 +443,8 @@
     .btn-register .spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.3); border-top-color: var(--white); border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
     .btn-register.loading .spinner { display: block; }
     .btn-register.loading .blabel { display: none; }
-    .form-guar { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; color: var(--gray-400); margin-top: 9px; }
+    .form-guar { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; color: var(--gray-400); margin-top: 8px; }
+
     .success-box { display: none; text-align: center; padding: 28px 12px; }
     .success-box.show { display: block; }
     .s-emoji { font-size: 44px; margin-bottom: 13px; }
@@ -424,6 +486,8 @@
       footer { padding: 36px 20px 20px; }
       .modal { width: 100vw; }
       .meta-grid { grid-template-columns: 1fr 1fr; }
+      /* Stack name + phone on mobile */
+      .sticky-fields { flex-direction: column; gap: 6px; }
     }
     @media (max-width: 480px) {
       .courses-grid { grid-template-columns: 1fr; }
@@ -658,14 +722,22 @@
   <!-- SHARED MODAL OVERLAY -->
   <div class="modal-overlay" id="modal-overlay" role="presentation"></div>
 
-  <!-- COURSE MODAL -->
+  <!-- ═══════════════════════════════════════════════════════
+       COURSE MODAL
+       thumb → header → [modal-scroll: details] → [modal-sticky: form]
+       The sticky zone is ALWAYS visible — zero scrolling required.
+  ════════════════════════════════════════════════════════ -->
   <div class="modal" id="course-modal" role="dialog" aria-modal="true" aria-labelledby="modal-course-title">
+
+    <!-- Image -->
     <div class="modal-thumb" id="modal-thumb">
       <button class="modal-close" id="modal-close" aria-label="Закрыть">
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 1l9 9M10 1L1 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
       <div class="modal-thumb-overlay"></div>
     </div>
+
+    <!-- Title / Rating / Price — always visible -->
     <div class="modal-header">
       <div class="modal-cat" id="modal-cat"></div>
       <div class="modal-title" id="modal-course-title"></div>
@@ -681,7 +753,9 @@
         <span class="mpbadge">−50%</span>
       </div>
     </div>
-    <div class="modal-body">
+
+    <!-- Scrollable details -->
+    <div class="modal-scroll">
       <div class="lifetime-strip">
         <div class="ls-item"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M6 3v3l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Доступ навсегда</div>
         <div class="ls-item"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1l1.2 3.5H11l-3 2.2 1.2 3.5L6 8l-3.2 2.2L4 6.7 1 4.5h3.8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Сертификат</div>
@@ -694,40 +768,48 @@
       <div class="meta-grid" id="m-meta"></div>
       <div class="mlabel">Чему вы научитесь</div>
       <div class="outcomes" id="m-outcomes"></div>
-      <div class="mlabel">Оставить заявку</div>
-      <div class="form-box" id="form-box">
-        <div class="form-box-title">Хочу купить этот курс</div>
-        <div class="form-box-sub">Оставьте номер — наш менеджер свяжется в WhatsApp, ответит на вопросы и пришлёт ссылку на оплату</div>
-        <div style="position:relative">
-          <div class="form-row">
-            <label class="form-label" for="f-name">Ваше имя</label>
-            <input class="form-input" type="text" id="f-name" placeholder="Алибек Сейтов" autocomplete="given-name" />
-          </div>
-          <div class="form-row">
-            <label class="form-label" for="f-phone">WhatsApp / Телефон <span style="color:var(--blue)">*</span></label>
-            <input class="form-input" type="tel" id="f-phone" placeholder="+7 777 123 45 67" autocomplete="tel" />
-            <div class="form-err" id="f-err">Пожалуйста, укажите ваш номер телефона</div>
-          </div>
-          <div class="hp-field" aria-hidden="true"><input type="text" id="f-hp" name="website" tabindex="-1" autocomplete="off" /></div>
-        </div>
-        <button class="btn-register" id="btn-reg" type="button">
-          <span class="blabel">Я заинтересован — связаться &nbsp;→</span>
-          <span class="spinner" aria-hidden="true"></span>
-        </button>
-        <div class="form-guar">
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1L1 3v3.5C1 8.8 3 10.5 5.5 11 8 10.5 10 8.8 10 6.5V3L5.5 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
-          Мы не передаём ваши данные третьим лицам
-        </div>
+    </div>
+
+    <!-- ── STICKY FORM — always visible, never needs scrolling ── -->
+    <div class="modal-sticky" id="modal-sticky">
+      <!-- Course name pill + price -->
+      <div class="sticky-header">
+        <div class="sticky-course-pill" id="sticky-course-name"></div>
+        <div class="sticky-price" id="sticky-price"></div>
       </div>
-      <div class="success-box" id="success-box" role="status">
-        <div class="s-emoji">🎉</div>
-        <div class="s-title">Заявка принята!</div>
-        <p class="s-desc">Наш менеджер свяжется с вами в WhatsApp в течение нескольких часов, ответит на вопросы и пришлёт ссылку на оплату.<br/><br/>До встречи на курсе!</p>
+      <!-- Validation error -->
+      <div class="sticky-err" id="f-err">Укажите ваш номер WhatsApp</div>
+      <!-- Fields + honeypot -->
+      <div style="position:relative">
+        <div class="sticky-fields">
+          <input class="form-input" type="text"  id="f-name"  placeholder="Имя"              autocomplete="given-name" />
+          <input class="form-input" type="tel"   id="f-phone" placeholder="+7 777 123 45 67"  autocomplete="tel" />
+        </div>
+        <div class="hp-field" aria-hidden="true"><input type="text" id="f-hp" name="website" tabindex="-1" autocomplete="off" /></div>
+      </div>
+      <!-- CTA -->
+      <button class="btn-register" id="btn-reg" type="button">
+        <span class="blabel">Я заинтересован — связаться &nbsp;→</span>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+      <div class="form-guar">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1L1 3v3.5C1 8.8 3 10.5 5.5 11 8 10.5 10 8.8 10 6.5V3L5.5 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
+        Мы не передаём ваши данные третьим лицам
       </div>
     </div>
+
+    <!-- Success replaces sticky zone -->
+    <div class="sticky-success" id="sticky-success">
+      <div class="s-emoji">🎉</div>
+      <div class="s-title">Заявка принята!</div>
+      <p class="s-desc">Наш менеджер свяжется в WhatsApp в течение нескольких часов и пришлёт ссылку на оплату.</p>
+    </div>
+
   </div>
 
-  <!-- TUTOR MODAL -->
+  <!-- ═══════════════════════════════════════════════════════
+       TUTOR MODAL — scrollable form, no sticky needed
+  ════════════════════════════════════════════════════════ -->
   <div class="modal" id="tutor-modal" role="dialog" aria-modal="true" aria-labelledby="tutor-modal-title">
     <div class="tutor-modal-head">
       <button class="tutor-modal-close" id="tutor-close" aria-label="Закрыть">
@@ -792,14 +874,13 @@
             <textarea class="form-textarea" id="t-about" placeholder="Расскажите о своём профессиональном опыте, где работали, чем занимались, что умеете лучше всего..."></textarea>
             <div class="form-err" id="t-about-err">Расскажите о себе</div>
           </div>
-          <!-- Honeypot -->
           <div class="hp-field" aria-hidden="true"><input type="text" id="t-hp" name="website" tabindex="-1" autocomplete="off" /></div>
         </div>
         <button class="btn-register" id="btn-tutor-submit" type="button">
           <span class="blabel">Отправить заявку &nbsp;→</span>
           <span class="spinner" aria-hidden="true"></span>
         </button>
-        <div class="form-guar">
+        <div class="form-guar" style="margin-top:10px">
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M5.5 1L1 3v3.5C1 8.8 3 10.5 5.5 11 8 10.5 10 8.8 10 6.5V3L5.5 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/></svg>
           Ваши данные в безопасности — мы свяжемся в течение 48 часов
         </div>
@@ -1066,10 +1147,8 @@
 
     // ── SHARED OVERLAY ────────────────────────────────────
     const overlay = document.getElementById('modal-overlay');
-
-    function openOverlay() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function openOverlay()  { overlay.classList.add('open');    document.body.style.overflow = 'hidden'; }
     function closeOverlay() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
-
     overlay.addEventListener('click', () => { closeCourseModal(); closeTutorModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCourseModal(); closeTutorModal(); } });
 
@@ -1080,21 +1159,34 @@
 
     function openCourseModal(c) {
       active = c; fStarted = false;
+
+      // Thumbnail
       const thumb = document.getElementById('modal-thumb');
       thumb.querySelectorAll('img, .modal-thumb-fallback').forEach(n => n.remove());
       const img = document.createElement('img'); img.src = c.image; img.alt = c.title;
-      const fb = document.createElement('div'); fb.className = 'modal-thumb-fallback'; fb.style.background = c.fallbackBg; fb.textContent = c.emoji; fb.style.display = 'none';
+      const fb  = document.createElement('div'); fb.className = 'modal-thumb-fallback';
+      fb.style.background = c.fallbackBg; fb.textContent = c.emoji; fb.style.display = 'none';
       img.onerror = () => { img.style.display = 'none'; fb.style.display = 'flex'; };
       thumb.insertBefore(fb, thumb.querySelector('.modal-thumb-overlay'));
       thumb.insertBefore(img, fb);
-      document.getElementById('modal-cat').textContent   = c.category;
+
+      // Header
+      document.getElementById('modal-cat').textContent          = c.category;
       document.getElementById('modal-course-title').textContent = c.title;
-      document.getElementById('m-rating').textContent    = c.rating;
-      document.getElementById('m-reviews').textContent   = c.reviews;
-      document.getElementById('m-students').textContent  = c.students;
-      document.getElementById('m-pnow').textContent      = c.pnow;
-      document.getElementById('m-pwas').textContent      = c.pwas;
-      document.getElementById('m-desc').textContent      = c.desc;
+      document.getElementById('m-rating').textContent           = c.rating;
+      document.getElementById('m-reviews').textContent          = c.reviews;
+      document.getElementById('m-students').textContent         = c.students;
+      document.getElementById('m-pnow').textContent             = c.pnow;
+      document.getElementById('m-pwas').textContent             = c.pwas;
+
+      // Sticky zone labels
+      // Truncate course name to ~30 chars for the pill
+      const shortName = c.title.length > 32 ? c.title.slice(0, 30) + '…' : c.title;
+      document.getElementById('sticky-course-name').textContent = shortName;
+      document.getElementById('sticky-price').textContent       = c.pnow;
+
+      // Scrollable content
+      document.getElementById('m-desc').textContent = c.desc;
       document.getElementById('m-meta').innerHTML = `
         <div class="meta-chip"><div class="mclabel">Видео</div><div class="mcvalue">${c.hours} часов</div></div>
         <div class="meta-chip"><div class="mclabel">Уроков</div><div class="mcvalue">${c.lectures} видео</div></div>
@@ -1105,6 +1197,9 @@
           <div class="ocheck" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <span>${o}</span>
         </div>`).join('');
+
+      // Reset scroll + form
+      document.querySelector('.modal-scroll').scrollTop = 0;
       resetCourseForm();
       openOverlay(); courseModal.classList.add('open');
       track('course_card_click', c.id, { title: c.title });
@@ -1119,6 +1214,7 @@
 
     courseClose.addEventListener('click', closeCourseModal);
 
+    // Track form_start on first focus
     ['f-name', 'f-phone'].forEach(id => {
       document.getElementById(id).addEventListener('focus', () => {
         if (!fStarted && active) { fStarted = true; track('form_start', active.id, {}); }
@@ -1129,43 +1225,52 @@
       ['f-name', 'f-phone', 'f-hp'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('f-err').classList.remove('show');
       document.getElementById('f-phone').classList.remove('err');
-      document.getElementById('form-box').style.display = '';
-      document.getElementById('success-box').classList.remove('show');
-      const btn = document.getElementById('btn-reg'); btn.classList.remove('loading'); btn.disabled = false;
+      // Show sticky, hide success
+      document.getElementById('modal-sticky').classList.remove('hidden');
+      document.getElementById('sticky-success').classList.remove('show');
+      const btn = document.getElementById('btn-reg');
+      btn.classList.remove('loading'); btn.disabled = false;
     }
 
     document.getElementById('btn-reg').addEventListener('click', async () => {
       if (!active) return;
-      const name = document.getElementById('f-name').value.trim();
+      const name  = document.getElementById('f-name').value.trim();
       const phone = document.getElementById('f-phone').value.trim();
-      const hp = document.getElementById('f-hp').value.trim();
+      const hp    = document.getElementById('f-hp').value.trim();
+
       if (hp) { send('/session', { is_bot: true }); showCourseSuccess(); return; }
-      if (!phone) { document.getElementById('f-err').classList.add('show'); document.getElementById('f-phone').classList.add('err'); return; }
-      document.getElementById('f-err').classList.remove('show'); document.getElementById('f-phone').classList.remove('err');
-      const btn = document.getElementById('btn-reg'); btn.classList.add('loading'); btn.disabled = true;
+      if (!phone) {
+        document.getElementById('f-err').classList.add('show');
+        document.getElementById('f-phone').classList.add('err');
+        return;
+      }
+      document.getElementById('f-err').classList.remove('show');
+      document.getElementById('f-phone').classList.remove('err');
+
+      const btn = document.getElementById('btn-reg');
+      btn.classList.add('loading'); btn.disabled = true;
       try {
-        const r = await fetch(BACKEND + '/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: sessionId, visitor_id: visitorId, name: name || null, phone, email: null, course_id: active.id, time_on_page_ms: elapsed() }) });
+        const r = await fetch(BACKEND + '/submit', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: sessionId, visitor_id: visitorId, name: name || null, phone, email: null, course_id: active.id, time_on_page_ms: elapsed() }),
+        });
         if (!r.ok) throw new Error();
         showCourseSuccess();
       } catch (_) { showCourseSuccess(); }
     });
 
     function showCourseSuccess() {
-      document.getElementById('form-box').style.display = 'none';
-      document.getElementById('success-box').classList.add('show');
+      // Swap: hide form, show success in the same bottom zone
+      document.getElementById('modal-sticky').classList.add('hidden');
+      document.getElementById('sticky-success').classList.add('show');
     }
 
     // ── TUTOR MODAL ───────────────────────────────────────
     const tutorModal = document.getElementById('tutor-modal');
     const tutorClose = document.getElementById('tutor-close');
 
-    function openTutorModal() {
-      resetTutorForm();
-      openOverlay(); tutorModal.classList.add('open');
-    }
-    function closeTutorModal() {
-      tutorModal.classList.remove('open'); closeOverlay();
-    }
+    function openTutorModal()  { resetTutorForm(); openOverlay(); tutorModal.classList.add('open'); }
+    function closeTutorModal() { tutorModal.classList.remove('open'); closeOverlay(); }
 
     document.getElementById('btn-open-tutor').addEventListener('click', openTutorModal);
     document.getElementById('footer-tutor-link').addEventListener('click', e => { e.preventDefault(); openTutorModal(); });
@@ -1183,18 +1288,17 @@
     }
 
     document.getElementById('btn-tutor-submit').addEventListener('click', async () => {
-      const name           = document.getElementById('t-name').value.trim();
-      const phone          = document.getElementById('t-phone').value.trim();
-      const email          = document.getElementById('t-email').value.trim();
-      const profession     = document.getElementById('t-profession').value;
-      const experience     = document.getElementById('t-exp').value;
-      const courseIdea     = document.getElementById('t-idea').value.trim();
-      const about          = document.getElementById('t-about').value.trim();
-      const hp             = document.getElementById('t-hp').value.trim();
+      const name       = document.getElementById('t-name').value.trim();
+      const phone      = document.getElementById('t-phone').value.trim();
+      const email      = document.getElementById('t-email').value.trim();
+      const profession = document.getElementById('t-profession').value;
+      const experience = document.getElementById('t-exp').value;
+      const courseIdea = document.getElementById('t-idea').value.trim();
+      const about      = document.getElementById('t-about').value.trim();
+      const hp         = document.getElementById('t-hp').value.trim();
 
       if (hp) { showTutorSuccess(); return; }
 
-      // Validate
       let valid = true;
       const check = (val, errId, inputId) => {
         if (!val) {
@@ -1216,7 +1320,6 @@
 
       const btn = document.getElementById('btn-tutor-submit');
       btn.classList.add('loading'); btn.disabled = true;
-
       try {
         const r = await fetch(BACKEND + '/tutor', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -1232,7 +1335,7 @@
       document.getElementById('tutor-success').classList.add('show');
     }
 
-// ── INIT ──────────────────────────────────────────────
+    // ── INIT ─────────────────────────────────────────────
     renderCards('all');
     initSession();
 
@@ -1240,11 +1343,7 @@
     (function () {
       const target = new URLSearchParams(window.location.search).get('modal');
       if (!target) return;
-      if (target === 'tutor') {
-        // Small delay so page renders first
-        setTimeout(openTutorModal, 400);
-        return;
-      }
+      if (target === 'tutor') { setTimeout(openTutorModal, 400); return; }
       const course = COURSES.find(c => c.id === target);
       if (course) setTimeout(() => openCourseModal(course), 400);
     })();
